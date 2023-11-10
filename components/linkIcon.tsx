@@ -5,13 +5,12 @@ import { button as buttonStyles } from "@nextui-org/theme";
 type linkIcon = {
   /* icon: React.ReactNode; */
   icon: JSX.Element;
-  text?: string;
+  text: string; // "" when it should be just an icon-link
   link: string;
-  showAnchor: boolean;
-  asButton: boolean
+  showAnchor: boolean; // show that the link is external
+  asButton: boolean // more like a button
 };
 
-//put this in a button to create a ICON-Button
 export default function LinkIcon(props: linkIcon) {
   const { icon, text, link, showAnchor, asButton} = props;
 
