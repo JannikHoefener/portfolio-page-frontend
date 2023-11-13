@@ -8,41 +8,10 @@ import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 
 import { gql, useQuery } from "@apollo/client";
-
-
-// http://localhost:1337/graphql
-type aboutMeResponse = {
-	aboutMe: {
-		data:{
-			attributes: aboutMeType
-		}
-	}
-}
-
-type aboutMeType = {
-	caption: string
-	aboutMe: string
-	curriculumVitae: JSON
-}
-
-const GET_ABOUTME = gql`
-query {
-	aboutMe {
-	  data {
-		attributes {
-		  caption
-		  aboutMe
-		  curriculumVitae
-		}
-	  }
-	}
-  }
-`;
+import { GET_ABOUTME, aboutMeResponse } from "@/queries/aboutme";
 
 
 export default function Home() {
-
-	// http://localhost:1337/graphql
   const { loading, error, data } = useQuery<aboutMeResponse>(GET_ABOUTME);
   if (loading || data === undefined) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
