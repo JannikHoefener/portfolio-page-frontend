@@ -23,43 +23,32 @@
     }
   } */
 
-import { gql } from "@apollo/client"
+import { gql } from "@apollo/client";
+import { componentLinkType } from "./componentLink";
 
-  
 // mit repeatable Components
+export type componentLinktreeType = {
+  title: string;
+  description: string;
+  createLinks: componentLinkType[];
+  profileImage: componentSingleImage;
+};
+
+export type linktreeIdResponse = {
+  data: {
+    id: number;
+  };
+};
+
 export type linktreeResponse = {
-	linktree: {
-		data:{
-			attributes: linktreeType
-		}
-	}
-}
-
-type linktreeType = {
-	title: string;
-	description: string;
-	createLinks: linkComponentType[];
-    profileImage: singleImageType;
-}
-
-type linkComponentType = {
-    website: string
-    title: string
-    url: string
-    description: string
-    type:string
-}
-
-type singleImageType = {
+  linktree: {
     data: {
-      attributes: {
-        url: string
-      }
-    }
-}
-
+      attributes: componentLinktreeType;
+    };
+  };
+};
 export const GET_LINKTREE = gql`
-query getLinktree($linktreeID: ID!){
+  query getLinktree($linktreeID: ID!) {
     linktree(id: $linktreeID) {
       data {
         attributes {
@@ -83,5 +72,4 @@ query getLinktree($linktreeID: ID!){
       }
     }
   }
-  
 `;

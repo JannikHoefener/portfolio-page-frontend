@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { Code } from "@nextui-org/code";
@@ -8,28 +8,39 @@ import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 
 import { gql, useQuery } from "@apollo/client";
-import { GET_ABOUTME, aboutMeResponse } from "@/queries/aboutme";
-
+import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/pageAboutme";
+import Headline from "@/components/headline";
+import Linktree from "@/components/linktree";
+import CvPart from "@/components/cvPart";
 
 export default function Home() {
   const { loading, error, data } = useQuery<aboutMeResponse>(GET_ABOUTME);
   if (loading || data === undefined) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  console.log(data.aboutMe.data.attributes.aboutMe)
+  console.log(data.aboutMe.data.attributes);
+  const thisData = data.aboutMe.data.attributes;
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <h1>{thisData.caption}</h1>
+      {/* About Section */}
+      {thisData.SectionAbout.map((item, index) => (
+        <>
+          <Headline
+            title={item.sectionTitle.title}
+            variant={item.sectionTitle.variant}
+          />
+          <p>{item.text}</p>
+        </>
+      ))}
+      {/* Linktree */}
+      <Linktree id={thisData.linktree.data.id}/>
+      {/* CV Section */}
+      {thisData.SectionCv.map((item, index) => (<CvPart title={item.title} location={item.location} position={item.position} from={item.from} until={item.until} description={item.description} tags={[/* ...item.tags */]} />))}
       <p>
-		  {data.aboutMe.data.attributes.caption}
-	  </p>
-	  <p>
-		  {data.aboutMe.data.attributes.aboutMe}
-	  </p>
-	  <p>
-		{/* todo: how to handle the new strapi JSON text block */}
-		  {/* {data.aboutMe.data.attributes.curriculumVitae} */}
-	  </p>
+      {thisData.updatedAt}
+      </p>
     </section>
   );
 }

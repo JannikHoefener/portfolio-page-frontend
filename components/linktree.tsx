@@ -1,13 +1,15 @@
 "use client";
-import { GET_LINKTREE, linktreeResponse } from "@/queries/linktree";
+import { GET_LINKTREE, linktreeResponse } from "@/types-queries/componentLinktree";
 import { useQuery } from "@apollo/client";
-import React from "react";
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
+import {
+  Avatar,
+  Card,
+  CardBody
+} from "@nextui-org/react";
+import { IoPeopleCircleOutline } from "react-icons/io5";
 
-import Image from "next/image";
-import LinkIcon from "./linkIcon";
-import { BsInstagram } from "react-icons/bs";
 import { iconChooser } from "@/config/iconChooser";
+import LinkIcon from "./linkIcon";
 type linktreeProps = {
   id: number;
 };
@@ -22,7 +24,6 @@ export default function Linktree(props: linktreeProps) {
   console.log(data.linktree.data.attributes);
   const ltdata = data.linktree.data.attributes;
 
-
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 h-full">
       <Card shadow="lg">
@@ -30,19 +31,20 @@ export default function Linktree(props: linktreeProps) {
           <div className="flex flex-col w-full">
             {/* CardImage */}
             <div className="flex justify-center">
-              <Image
+              <Avatar
                 /* http://localhost:1337/uploads/hero_card_2fa0c97532.png */
-                src={
-                  "/http://localhost:1337" +
-                  ltdata.profileImage.data.attributes.url
+                //src={"/http://localhost:1337" + ltdata.profileImage.data.attributes.url}
+                src="https://i.pravatar.cc/150?u=a04258114e29026708c" 
+                showFallback
+                fallback={
+                  <IoPeopleCircleOutline
+                    className="animate-pulse w-20 h-20 text-default-500"
+                    fill="currentColor"
+                    size={20}
+                  />
                 }
-                width={200}
-                height={200}
-                alt={
-                  ltdata.profileImage.data.attributes.url +
-                  " => image not found"
-                }
-                className="justify-center rounded-lg border-large"
+                name={ltdata.title}
+                className="w-20 h-20 text-large"
               />
             </div>
             {/* Title */}
@@ -73,8 +75,7 @@ export default function Linktree(props: linktreeProps) {
             {/* Links */}
             {/* LinkIcons */}
 
-
-            <div className="flex flex-col justify-center gap-4 pt-4">
+            <div className="flex items-center justify-center pt-4">
               {ltdata.createLinks.map((link, index) => (
                 <>
                   {link.type === "linkIcon" ? (
