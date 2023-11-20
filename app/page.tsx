@@ -12,6 +12,7 @@ import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/pageAboutme";
 import Headline from "@/components/headline";
 import Linktree from "@/components/linktree";
 import CvPart from "@/components/cvPart";
+import { ArticleBox } from "@/components/basicComponents";
 
 export default function Home() {
   const { loading, error, data } = useQuery<aboutMeResponse>(GET_ABOUTME);
@@ -22,6 +23,7 @@ export default function Home() {
   const thisData = data.aboutMe.data.attributes;
 
   return (
+    <ArticleBox>
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <h1>{thisData.caption}</h1>
       {/* About Section */}
@@ -42,5 +44,6 @@ export default function Home() {
       {thisData.updatedAt}
       </p>
     </section>
+    </ArticleBox>
   );
 }

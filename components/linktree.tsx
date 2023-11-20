@@ -10,6 +10,7 @@ import { IoPeopleCircleOutline } from "react-icons/io5";
 
 import { iconChooser } from "@/config/iconChooser";
 import LinkIcon from "./linkIcon";
+import { Heading1, Heading2, Heading3 } from "./basicComponents";
 type linktreeProps = {
   id: number;
 };
@@ -49,7 +50,7 @@ export default function Linktree(props: linktreeProps) {
             </div>
             {/* Title */}
             <div className="flex justify-center pt-2">
-              <h2 className="text-3xl font-bold">{ltdata.title}</h2>
+              <Heading1>{ltdata.title}</Heading1>
             </div>
 
             {/* TODO: Space for Tags  */}
@@ -67,9 +68,9 @@ export default function Linktree(props: linktreeProps) {
 
             {/* Description */}
             <div className="flex justify-center max-w-sm">
-              <p className="text-lg text-center font-semibold">
+              <Heading3>
                 {ltdata.description}
-              </p>
+              </Heading3>
             </div>
 
             {/* Links */}

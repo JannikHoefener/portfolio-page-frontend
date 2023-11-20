@@ -13,8 +13,14 @@ import { link as linkStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import clsx from "clsx";
 import NextLink from "next/link";
-
-import { GithubIcon } from "@/components/icons";
+import {
+  BsInstagram,
+  BsLink,
+  BsTiktok,
+  BsLinkedin,
+  BsGithub,
+  BsSpotify,
+} from "react-icons/bs";
 import { ThemeSwitch } from "@/components/theme-switch";
 
 import LinkIcon from "./linkIcon";
@@ -56,7 +62,7 @@ export const Navbar = () => {
           <LinkIcon
             link={"https://www.google.de/"}
             text=""
-            icon={<GithubIcon className="text-default-500" />}
+            icon={<BsGithub className="text-default-500" />}
             showAnchor={false}
             asButton={false}
           />
@@ -71,7 +77,7 @@ export const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <Link isExternal href={siteConfig.links.github} aria-label="Github">
-          <GithubIcon className="text-default-500" />
+          <BsGithub size={22} className="text-default-500" />
         </Link>
         <ThemeSwitch />
         <NavbarMenuToggle />

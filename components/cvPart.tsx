@@ -1,12 +1,14 @@
 import { getMonthYearName } from "@/config/dateMachine";
 import { componentTagResponse } from "@/types-queries/componentTag";
 import {
-    Accordion, AccordionItem,
-    Card,
-    CardBody,
-    CardFooter,
-    Divider
+  Accordion,
+  AccordionItem,
+  Card,
+  CardBody,
+  CardFooter,
+  Divider,
 } from "@nextui-org/react";
+import { Text, LLText, HLText } from "./basicComponents";
 
 export type sectionCvType = {
   title: string;
@@ -26,21 +28,19 @@ export default function CvPart(props: sectionCvType) {
         <CardBody>
           <Accordion>
             <AccordionItem /* subtitle="Press to expand" */ title={title}>
-              <p className="text-small text-default-500">
-                {position + " - " + location}
-              </p>
+              <LLText>{position + " - " + location}</LLText>
               <Divider />
-              <p className="text-md">{description}</p>
+              <Text>{description}</Text>
             </AccordionItem>
           </Accordion>
         </CardBody>
         <Divider />
         <CardFooter>
-          <p className="text-small text-default-500">
+          <LLText>
             {getMonthYearName(from) +
               " - " +
               (until == null ? "now" : getMonthYearName(until))}
-          </p>
+          </LLText>
         </CardFooter>
       </Card>
       <p>
