@@ -1,18 +1,20 @@
 import React, { ReactNode } from 'react'
+import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 type BasicComponentsProps = {
     children: ReactNode;
   }
 
 
-//Heading1
+//Headings
 export function Heading1({children}: BasicComponentsProps) {
     return(<p className="text-3xl font-bold">{children}</p>)
 }
-//Heading2
 export function Heading2({children}: BasicComponentsProps) {
     return(<p className="text-2xl font-bold">{children}</p>)
 }
-//Heading3
 export function Heading3({children}: BasicComponentsProps) {
     return(<p className="text-lg font-semibold">{children}</p>)
 }
@@ -21,7 +23,17 @@ export function Heading3({children}: BasicComponentsProps) {
 export function Text({children}: BasicComponentsProps) {
     return(<p className="">{children}</p>)
 }
+//Markdown-Text-Interpreter
+type MdTextProps = {
+    text: string
+}
 
+
+
+export function MdText(props: MdTextProps) {
+    return(<Markdown className={"markdown"} remarkPlugins={[remarkGfm]}>{props.text}</Markdown>)
+    /* https://stackoverflow.com/questions/74607419/react-markdown-don%C2%B4t-render-markdown */
+} 
 
 //HighlightedText
 export function HLText({children}: BasicComponentsProps) {
@@ -31,6 +43,7 @@ export function HLText({children}: BasicComponentsProps) {
 export function LLText({children}: BasicComponentsProps) {
     return(<p className="text-small text-default-500">{children}</p>)
 }
+
 
 //Page-Box
 // => toDo: als Layout nutzen nicht so schmal wie article aber auch nicht ganz bis an bildschirmrand

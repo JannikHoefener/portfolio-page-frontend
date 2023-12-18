@@ -8,7 +8,8 @@ import {
   CardFooter,
   Divider,
 } from "@nextui-org/react";
-import { Text, LLText, HLText } from "./basicComponents";
+import { Text, LLText, HLText, MdText } from "./basicComponents";
+import Markdown from "react-markdown";
 
 export type sectionCvType = {
   title: string;
@@ -30,7 +31,8 @@ export default function CvPart(props: sectionCvType) {
             <AccordionItem /* subtitle="Press to expand" */ title={title}>
               <LLText>{position + " - " + location}</LLText>
               <Divider />
-              <Text>{description}</Text>
+              {/* <Text>{description}</Text> */}
+              <MdText text={description} />
             </AccordionItem>
           </Accordion>
         </CardBody>

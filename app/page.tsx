@@ -1,18 +1,11 @@
 "use client";
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
 
-import { gql, useQuery } from "@apollo/client";
-import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/pageAboutme";
+import { ArticleBox } from "@/components/basicComponents";
+import CvPart from "@/components/cvPart";
 import Headline from "@/components/headline";
 import Linktree from "@/components/linktree";
-import CvPart from "@/components/cvPart";
-import { ArticleBox } from "@/components/basicComponents";
+import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/pageAboutme";
+import { useQuery } from "@apollo/client";
 
 export default function Home() {
   const { loading, error, data } = useQuery<aboutMeResponse>(GET_ABOUTME);
@@ -39,7 +32,7 @@ export default function Home() {
       {/* Linktree */}
       <Linktree id={thisData.linktree.data.id}/>
       {/* CV Section */}
-      {thisData.SectionCv.map((item, index) => (<CvPart title={item.title} location={item.location} position={item.position} from={item.from} until={item.until} description={item.description} tags={[/* ...item.tags */]} />))}
+      {thisData.SectionCv.map((item, index) => (<CvPart title={item.title} location={item.location} position={item.position} from={item.from} until={item.until} description={item.description} tags={[ /* ...item.tags */]} />))}
       <p>
       {thisData.updatedAt}
       </p>
