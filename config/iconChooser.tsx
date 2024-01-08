@@ -5,6 +5,7 @@ import {
   BsLinkedin,
   BsGithub,
   BsSpotify,
+  BsYoutube,
 } from "react-icons/bs";
 
 /* Achtung: String muss wie in Strapi sein!!! 
@@ -14,7 +15,7 @@ TikTok
 LinkedIn
 GitHub
 Spotify
-*/
+YouTube */
 // https://react-icons.github.io/react-icons
 
 export function iconChooser(props: string) {
@@ -30,6 +31,8 @@ export function iconChooser(props: string) {
       return <BsGithub />;
     case "Spotify":
       return <BsSpotify />;
+    case "YouTube":
+      return <BsYoutube />;
     default: /*weblink*/ 
       return <BsLink />;
   }

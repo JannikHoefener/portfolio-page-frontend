@@ -1,6 +1,6 @@
 //todo: evtl anpassen wenn carousell oder showcase 
 
-type componentSingleImage = {
+export type SingleImageType = {
     data: {
       attributes: {
         url: string

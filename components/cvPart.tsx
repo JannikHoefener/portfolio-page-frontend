@@ -8,8 +8,7 @@ import {
   CardFooter,
   Divider,
 } from "@nextui-org/react";
-import { Text, LLText, HLText, MdText } from "./basicComponents";
-import Markdown from "react-markdown";
+import { LLText, MdText } from "./basicComponents/textblock";
 
 export type sectionCvType = {
   title: string;
@@ -45,9 +44,9 @@ export default function CvPart(props: sectionCvType) {
           </LLText>
         </CardFooter>
       </Card>
-      <p>
+      <div>
         <Divider orientation="vertical" />
-      </p>
+      </div>
     </>
   );
 }

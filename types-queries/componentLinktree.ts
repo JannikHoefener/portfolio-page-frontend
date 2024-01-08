@@ -31,7 +31,7 @@ export type componentLinktreeType = {
   title: string;
   description: string;
   createLinks: componentLinkType[];
-  profileImage: componentSingleImage;
+  profileImage: SingleImageType;
 };
 
 export type linktreeIdResponse = {

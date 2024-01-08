@@ -9,7 +9,7 @@ import { IoPeopleCircleOutline } from "react-icons/io5";
 
 import { iconChooser } from "@/config/iconChooser";
 import LinkIcon from "./linkIcon";
-import { Heading1, Heading2, Heading3 } from "./basicComponents";
+import { Heading1, Heading3 } from "./basicComponents/headline";
 type linktreeProps = {
   id: number;
 };
@@ -32,9 +32,7 @@ export default function Linktree(props: linktreeProps) {
               {/* CardImage */}
               <div className="flex justify-center">
                 <Avatar
-                  /* http://localhost:1337/uploads/hero_card_2fa0c97532.png */
-                  //src={"/http://localhost:1337" + ltdata.profileImage.data.attributes.url}
-                  src="https://i.pravatar.cc/150?u=a04258114e29026708c"
+                  src={"http://localhost:1337/uploads/hero_card_2fa0c97532.png"} /* toDO: here the upload */
                   showFallback
                   fallback={
                     <IoPeopleCircleOutline

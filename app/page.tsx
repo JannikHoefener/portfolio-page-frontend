@@ -1,19 +1,20 @@
 "use client";
 
-import { ArticleBox } from "@/components/basicComponents";
 import CvPart from "@/components/cvPart";
-import Headline from "@/components/headline";
+import Headline from "@/components/basicComponents/headline";
 import Linktree from "@/components/linktree";
 import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/pageAboutme";
 import { useQuery } from "@apollo/client";
+import { ArticleBox } from "@/components/basicComponents/articleBox";
 
 export default function Home() {
   const { loading, error, data } = useQuery<aboutMeResponse>(GET_ABOUTME);
   if (loading || data === undefined) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  console.log(data.aboutMe.data.attributes);
+  /* console.log(data.aboutMe.data.attributes); */
   const thisData = data.aboutMe.data.attributes;
+  
 
   return (
     <ArticleBox>
@@ -30,6 +31,7 @@ export default function Home() {
         </>
       ))}
       {/* Linktree */}
+      {/* {thisData.linktree.data.id === null ? <></> : <Linktree id={thisData.linktree.data.id}/>} */}
       <Linktree id={thisData.linktree.data.id}/>
       {/* CV Section */}
       {thisData.SectionCv.map((item, index) => (<CvPart title={item.title} location={item.location} position={item.position} from={item.from} until={item.until} description={item.description} tags={[ /* ...item.tags */]} />))}
