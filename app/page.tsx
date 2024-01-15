@@ -3,9 +3,9 @@
 import CvPart from "@/components/cvPart";
 import Headline from "@/components/basicComponents/headline";
 import Linktree from "@/components/linktree";
-import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/pageAboutme";
+import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/queryPageAboutme";
 import { useQuery } from "@apollo/client";
-import { ArticleBox } from "@/components/basicComponents/articleBox";
+import { ArticleBox, PageLayout } from "@/components/basicComponents/layoutTemplates";
 
 export default function Home() {
   const { loading, error, data } = useQuery<aboutMeResponse>(GET_ABOUTME);
@@ -14,11 +14,10 @@ export default function Home() {
 
   /* console.log(data.aboutMe.data.attributes); */
   const thisData = data.aboutMe.data.attributes;
-  
 
   return (
-    <ArticleBox>
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <PageLayout>
+      {/*  */}
       <h1>{thisData.caption}</h1>
       {/* About Section */}
       {thisData.SectionAbout.map((item, index) => (
@@ -32,13 +31,27 @@ export default function Home() {
       ))}
       {/* Linktree */}
       {/* {thisData.linktree.data.id === null ? <></> : <Linktree id={thisData.linktree.data.id}/>} */}
-      <Linktree id={thisData.linktree.data.id}/>
+      <Linktree id={thisData.linktree.data.id} />
       {/* CV Section */}
-      {thisData.SectionCv.map((item, index) => (<CvPart title={item.title} location={item.location} position={item.position} from={item.from} until={item.until} description={item.description} tags={[ /* ...item.tags */]} />))}
-      <p>
-      {thisData.updatedAt}
-      </p>
-    </section>
-    </ArticleBox>
+      <div className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+        {thisData.SectionCv.map((item, index) => (
+          <CvPart
+            title={item.title}
+            location={item.location}
+            position={item.position}
+            from={item.from}
+            until={item.until}
+            description={item.description}
+            tags={
+              [
+                /* ...item.tags */
+              ]
+            }
+          />
+        ))}
+      </div>
+      <p>{thisData.updatedAt}</p>
+      {/* </section> */}
+    </PageLayout>
   );
 }

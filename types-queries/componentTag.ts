@@ -1,14 +1,14 @@
-type componentTagType = {
-    
-        key: string
-        type: string
-      
+
+export type ComponentTagsResponse = {
+    data: {
+        id: string;
+        attributes: {
+            tag: TagType
+        }
+    }
 }
 
-export type componentTagResponse = {
-    data: {
-        attributes: {
-            tag: componentTagType
-        }
-      }
+type TagType = {
+        key: string
+        type: string
 }

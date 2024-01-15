@@ -1,35 +1,57 @@
 import { gql } from "@apollo/client";
+import { ComponentTagsResponse } from "./componentTag";
+import { ComponentSingleImageResponse } from "./componentSingleImage";
 
 
 // Projects Card
 export const GET_PROJECTS_INFO = gql`
 query getProjectsInfo {
-    projects {
-      data {
-        id
-        attributes {
-          title
-          state
-          cardCover {
-            data {
-              attributes {
-                url
-              }
+  projects {
+    data {
+      id
+      attributes {
+        title
+        state
+        cardCover {
+          data {
+            attributes {
+              url
             }
           }
-          tags {
-            data {
-              attributes {
-                key
-              }
-            }
-          }
-          description
         }
+        tags {
+          data {
+            attributes {
+              key
+            }
+          }
+        }
+        description
       }
     }
-  }   
+  }
+}
 `;
+
+type ProjectInfoType = {
+  id: string;
+  attributes: {
+    title: string;
+    state: string;
+    cardCover: ComponentSingleImageResponse;
+    tags: ComponentTagsResponse
+    description: string;
+  };
+};
+
+export type ProjectInfoResponse = {
+  
+    projects: {
+      data: ProjectInfoType[];
+    };
+  
+};
+
 
 // Project
 export const PROJECT = gql`

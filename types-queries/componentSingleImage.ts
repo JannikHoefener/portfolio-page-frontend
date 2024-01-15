@@ -1,9 +1,9 @@
-//todo: evtl anpassen wenn carousell oder showcase 
+//todo: evtl anpassen wenn carousell oder showcase
 
-export type SingleImageType = {
-    data: {
-      attributes: {
-        url: string
-      }
-    }
-}
+export type ComponentSingleImageResponse = {
+  data: {
+    attributes: {
+      url: string;
+    };
+  } | null;
+};
