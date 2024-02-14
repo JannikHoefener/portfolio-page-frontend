@@ -1,67 +1,18 @@
 import { gql } from "@apollo/client";
-import { ComponentTagsResponse } from "./componentTag";
 import { ComponentSingleImageResponse } from "./componentSingleImage";
-
+import { ComponentTagsResponse } from "@/components/basicComponents/tagRenderer";
 
 // Projects Card
 export const GET_PROJECTS_INFO = gql`
-query getProjectsInfo {
-  projects {
-    data {
-      id
-      attributes {
-        title
-        state
-        cardCover {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-        tags {
-          data {
-            attributes {
-              key
-            }
-          }
-        }
-        description
-      }
-    }
-  }
-}
-`;
-
-type ProjectInfoType = {
-  id: string;
-  attributes: {
-    title: string;
-    state: string;
-    cardCover: ComponentSingleImageResponse;
-    tags: ComponentTagsResponse
-    description: string;
-  };
-};
-
-export type ProjectInfoResponse = {
-  
-    projects: {
-      data: ProjectInfoType[];
-    };
-  
-};
-
-
-// Project
-export const PROJECT = gql`
-query getProject($projectID: ID!) {
-    project(id: $projectID) {
+  query getProjectsInfo {
+    projects {
       data {
         id
         attributes {
           title
           state
+          createDate
+          endDate
           cardCover {
             data {
               attributes {
@@ -71,12 +22,66 @@ query getProject($projectID: ID!) {
           }
           tags {
             data {
+              
+              attributes {
+                key
+                type
+              }
+            }
+          }
+          description
+        }
+      }
+    }
+  }
+`;
+
+type ProjectInfoType = {
+  id: string;
+  attributes: {
+    title: string;
+    state: string;
+    createDate: string;
+    endDate: string;
+    cardCover: ComponentSingleImageResponse;
+    tags: ComponentTagsResponse;
+    description: string;
+  };
+};
+
+export type ProjectInfoResponse = {
+  projects: {
+    data: ProjectInfoType[];
+  };
+};
+
+// Project
+export const PROJECT = gql`
+  query getProject($projectID: ID!) {
+    project(id: $projectID) {
+      data {
+        id
+        attributes {
+          title
+          state
+          createDate
+          endDate
+          description
+          cardCover {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          tags {
+            data {
+              id
               attributes {
                 key
               }
             }
           }
-          description
           linktree {
             data {
               id
@@ -89,5 +94,37 @@ query getProject($projectID: ID!) {
       }
     }
   }
-  
 `;
+
+type Project = {
+  /* id: string;
+  attributes: {
+    title: string;
+    state: string;
+    cardCover: {
+      data: null;
+    };
+    tags: {
+      data: [
+        {
+          attributes: {
+            key: string;
+          };
+        }
+      ];
+    };
+    description: string;
+    linktree: {
+      data: null;
+    };
+    content: [];
+  }; */
+};
+
+interface Data {
+  project: Project;
+}
+
+interface Response {
+  data: Data;
+}

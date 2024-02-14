@@ -15,7 +15,7 @@ export default function PrevSection(props: PrevSectionProps) {
   console.log("thisData", thisData);
   return (
     <>
-      <Heading1>{isFor + " Preview"}</Heading1>
+      {/* <Heading1>{isFor + " Preview"}</Heading1> */}
       <div className="grid grid-cols-3 gap-3 w-100%">
         {thisData.map((dataPoint) => (
           <PrevCard
@@ -26,6 +26,8 @@ export default function PrevSection(props: PrevSectionProps) {
             description={dataPoint.attributes.description}
             cardCover={dataPoint.attributes.cardCover}
             state={dataPoint.attributes.state}
+            createDate={dataPoint.attributes.createDate}
+            tags={dataPoint.attributes.tags}
           />
         ))}
       </div>
