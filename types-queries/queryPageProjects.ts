@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
-import { ComponentSingleImageResponse } from "./componentSingleImage";
-import { ComponentTagsResponse } from "@/components/basicComponents/tagRenderer";
+import { ComponentSingleImageResponse } from "./typesImages";
+import { linktreeIdResponse } from "./componentLinktree";
+import { TagsResponse } from "./typeTags";
 
 // Projects Card
 export const GET_PROJECTS_INFO = gql`
@@ -22,7 +23,6 @@ export const GET_PROJECTS_INFO = gql`
           }
           tags {
             data {
-              
               attributes {
                 key
                 type
@@ -44,7 +44,7 @@ type ProjectInfoType = {
     createDate: string;
     endDate: string;
     cardCover: ComponentSingleImageResponse;
-    tags: ComponentTagsResponse;
+    tags: TagsResponse;
     description: string;
   };
 };
@@ -79,6 +79,7 @@ export const PROJECT = gql`
               id
               attributes {
                 key
+                type
               }
             }
           }
@@ -96,35 +97,29 @@ export const PROJECT = gql`
   }
 `;
 
-type Project = {
-  /* id: string;
-  attributes: {
-    title: string;
-    state: string;
-    cardCover: {
-      data: null;
-    };
-    tags: {
-      data: [
-        {
-          attributes: {
-            key: string;
-          };
-        }
-      ];
-    };
-    description: string;
-    linktree: {
-      data: null;
-    };
-    content: [];
-  }; */
+export type ProjectResponse = {
+  project: {
+    data: ProjectType;
+  };
 };
 
-interface Data {
-  project: Project;
+export type GetProjectId = {
+  projectID: number
 }
 
-interface Response {
-  data: Data;
-}
+type ProjectType = {
+  id: string;
+  attributes: {
+    /* Header */
+    title: string;
+    description: string;
+    createDate: string;
+    endDate: string;
+    state: string;
+    cardCover: ComponentSingleImageResponse;
+    /* Content */
+    tags: TagsResponse;
+    linktree: linktreeIdResponse;
+    /* content: []; */
+  };
+};

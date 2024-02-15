@@ -26,7 +26,7 @@ export default function Linktree(props: linktreeProps) {
 
   return (
     <div className="min-w-3xl">{/* todo: Linktree soll eine fixe breite bekommen, mehr als jz */}
-      <section className="flex items-center justify-center py-8 md:py-10 h-full">
+      <section >
         <Card shadow="lg">
           <CardBody>
               {/* CardImage */}

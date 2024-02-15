@@ -1,9 +1,9 @@
-import { ComponentSingleImageResponse } from "@/types-queries/componentSingleImage";
+import { ComponentSingleImageResponse } from "@/types-queries/typesImages";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
 import TagRenderer, {
-  ComponentTagsResponse,
+  TagsResponse,
 } from "./basicComponents/tagRenderer";
 
 type PrevCardProps = {
@@ -14,7 +14,7 @@ type PrevCardProps = {
   description: string;
   cardCover?: ComponentSingleImageResponse; //TODO! 
   createDate: string; //TODO! 
-  tags: ComponentTagsResponse; 
+  tags: TagsResponse; 
   // => for Projects
   state?: string;
   endDate?: string;

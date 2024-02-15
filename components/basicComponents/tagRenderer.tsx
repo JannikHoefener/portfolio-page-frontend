@@ -1,26 +1,12 @@
+import { TagsResponse } from "@/types-queries/typeTags";
 import { Chip } from "@nextui-org/react";
 import React, { ReactComponentElement, ReactNode } from "react";
 import { FaRegLightbulb, FaRegEye } from "react-icons/fa";
-/* Tag Type Definition (for Strapi Output) */
-export type ComponentTagsResponse = {
-  data: {
-    /* id: string; */
-    attributes: {
-      /* tagData: TagType; */
-      key: string;
-      type: string;
-    };
-  }[];
-};
 
-type TagType = {
-  key: string;
-  type: string;
-};
 
 /* Tag-List Renderer */
 export type TagRendererProps = {
-  data: ComponentTagsResponse;
+  data: TagsResponse;
 };
 
 export default function TagRenderer(props: TagRendererProps) {

@@ -1,6 +1,3 @@
-import { SimpleGrid } from "@chakra-ui/react";
-import React from "react";
-import { Heading1 } from "./basicComponents/headline";
 import { ProjectInfoResponse } from "@/types-queries/queryPageProjects";
 import PrevCard from "./prevCard";
 
@@ -12,10 +9,9 @@ type PrevSectionProps = {
 export default function PrevSection(props: PrevSectionProps) {
   const { isFor, data } = props;
   const thisData = data.projects.data;
-  console.log("thisData", thisData);
+  /* console.log("thisData", thisData); */
   return (
     <>
-      {/* <Heading1>{isFor + " Preview"}</Heading1> */}
       <div className="grid grid-cols-3 gap-3 w-100%">
         {thisData.map((dataPoint) => (
           <PrevCard

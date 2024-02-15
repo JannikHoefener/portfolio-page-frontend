@@ -7,3 +7,11 @@ export type ComponentSingleImageResponse = {
     };
   } | null;
 };
+
+export type ComponentMultiImagesResponse = {
+  data: {
+    attributes: {
+      url: string;
+    };
+  }[] | null;
+};

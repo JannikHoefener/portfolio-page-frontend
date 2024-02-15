@@ -1,7 +1,6 @@
 import { gql } from "@apollo/client";
 import { componentHeadlineType } from "./componentHeadline";
 import { linktreeIdResponse, linktreeResponse } from "./componentLinktree";
-import { componentTagResponse } from "./componentTag";
 import { sectionCvType } from "@/components/cvPart";
 
 // http://localhost:1337/graphql
@@ -10,8 +9,6 @@ type sectionAboutType = {
   sectionTitle: componentHeadlineType;
   text: string;
 };
-
-
 
 type aboutMeType = {
   caption: string;
@@ -30,43 +27,56 @@ export type aboutMeResponse = {
 };
 
 export const GET_ABOUTME = gql`
-query {
-  aboutMe {
-    data {
-      attributes {
-        caption
-        SectionAbout {
-          sectionTitle {
-            title
-            variant
+  query {
+    aboutMe {
+      data {
+        attributes {
+          caption
+          SectionAbout {
+            sectionTitle {
+              title
+              variant
+            }
+            text
           }
-          text
-        }
-        linktree {
-          data {
-            id
-          }
-        }
-        SectionCv {
-          title
-          location
-          position
-          from
-          until
-          description
-          tags {
+          linktree {
             data {
-              attributes {
-                key
-                type
+              id
+            }
+          }
+          SectionCv {
+            title
+            location
+            position
+            from
+            until
+            description
+            tags {
+              data {
+                attributes {
+                  key
+                  type
+                }
               }
             }
           }
+          updatedAt
         }
-        updatedAt
       }
     }
   }
-}
+`;
 
+export const GET_TAGS = gql`
+  query getAllTags {
+    tags {
+      data {
+        id
+        attributes {
+          key
+          type
+        }
+      }
+    }
+  }
 `;
