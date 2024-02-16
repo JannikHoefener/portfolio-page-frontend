@@ -26,12 +26,13 @@
 import { gql } from "@apollo/client";
 import { componentLinkType } from "./componentLink";
 import { ComponentSingleImageResponse } from "./typesImages";
+import { DynComponentsCreateLinkType } from "./typesDynComponents";
 
 // mit repeatable Components
 export type componentLinktreeType = {
   title: string;
   description: string;
-  createLinks: componentLinkType[];
+  createLinks: DynComponentsCreateLinkType[];
   profileImage: ComponentSingleImageResponse;
 };
 

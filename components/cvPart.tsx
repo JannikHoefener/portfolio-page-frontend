@@ -1,5 +1,4 @@
 import { getMonthYearName } from "@/config/dateMachine";
-import { componentTagResponse } from "@/types-queries/componentTag";
 import {
   Accordion,
   AccordionItem,
@@ -9,6 +8,7 @@ import {
   Divider,
 } from "@nextui-org/react";
 import { LLText, MdText } from "./basicComponents/textblock";
+import { TagsResponse } from "@/types-queries/typeTags";
 
 export type sectionCvType = {
   title: string;
@@ -17,7 +17,7 @@ export type sectionCvType = {
   from: Date;
   until: Date;
   description: string;
-  tags: componentTagResponse[];
+  tags: TagsResponse[];
 };
 
 export default function CvPart(props: sectionCvType) {

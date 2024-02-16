@@ -7,6 +7,9 @@ import {
 import { useQuery } from "@apollo/client";
 import Linktree from "./linktree";
 import TagRenderer from "./basicComponents/tagRenderer";
+import DynHeadline from "./basicComponents/headline";
+import { DynTextSection } from "./basicComponents/textblock";
+import { DynLink } from "./basicComponents/linkIcon";
 type projectProps = {
   id: number;
 };
@@ -23,10 +26,11 @@ export default function ProjectArticle(props: projectProps) {
 
   const thisData = data.project.data;
   const headerData = data.project.data.attributes;
-  /* console.log("ProjektDataByID", thisData); */
+  const dynContent = data.project.data.attributes.content;
+  console.log("dynContent", dynContent);
   return (
     <>
-    {/* Header */}
+      {/* Header */}
       <TagRenderer data={headerData.tags} />
       <h1>{headerData.title}</h1>
       <div className="grid grid-cols-2 gap-4 py-8 md:py-10">
@@ -40,8 +44,29 @@ export default function ProjectArticle(props: projectProps) {
       </div>
       <p>{headerData.description}</p>
       {/* Content Section */}
-      {headerData.linktree? null : <Linktree id={headerData.linktree.data.id} />   } {/* error here? Still works?! TODO! */}
+      {/* {headerData.linktree ? null : ( */}
+      <Linktree id={headerData.linktree.data.id} />
+      {/* )}{" "} */}
+      {/* error here? Still works?! TODO! */}
       {/* TODO: ...Dyn-Article-Data... */}
+      {dynContent.map((component, index) => (
+        <div key={index}>
+          {/* Render components based on their typename and order */}
+          {component.__typename === "ComponentComponentsHeadline" && (
+            <>{<DynHeadline props={component} />}</>
+          )}
+          {component.__typename === "ComponentComponentsTextSection" && (
+            <>{<DynTextSection props={component} />}</>
+          )}
+          {component.__typename === "ComponentComponentsCreateLink" && (
+            <>{<DynLink props={component} />}</>
+          )}
+          {/* TODO:ComponentComponentsAlbum! */}
+          {component.__typename === "ComponentComponentsAlbum" && (
+            <>{/* {<LinkBlock props={component}  />} */}</>
+          )}
+        </div>
+      ))}
     </>
   );
 }

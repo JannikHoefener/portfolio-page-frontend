@@ -34,7 +34,7 @@ export const GET_ABOUTME = gql`
           caption
           SectionAbout {
             sectionTitle {
-              title
+              headlineText
               variant
             }
             text

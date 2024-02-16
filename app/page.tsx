@@ -1,6 +1,6 @@
 "use client";
 
-import Headline from "@/components/basicComponents/headline";
+import DynHeadline from "@/components/basicComponents/headline";
 import { PageLayout } from "@/components/basicComponents/layoutTemplates";
 import TagRenderer from "@/components/basicComponents/tagRenderer";
 import CvPart from "@/components/cvPart";
@@ -22,8 +22,8 @@ export default function Home() {
       {/* About Section */}
       {thisData.SectionAbout.map((item, index) => (
         <>
-          <Headline
-            title={item.sectionTitle.title}
+          <DynHeadline
+            headlineText={item.sectionTitle.headlineText}
             variant={item.sectionTitle.variant}
           />
           <p>{item.text}</p>

@@ -2,9 +2,8 @@ import { ComponentSingleImageResponse } from "@/types-queries/typesImages";
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import Link from "next/link";
 import React from "react";
-import TagRenderer, {
-  TagsResponse,
-} from "./basicComponents/tagRenderer";
+import TagRenderer from "./basicComponents/tagRenderer";
+import { TagsResponse } from "@/types-queries/typeTags";
 
 type PrevCardProps = {
   // => for both
@@ -12,9 +11,9 @@ type PrevCardProps = {
   id: string;
   title: string;
   description: string;
-  cardCover?: ComponentSingleImageResponse; //TODO! 
-  createDate: string; //TODO! 
-  tags: TagsResponse; 
+  cardCover?: ComponentSingleImageResponse; //TODO!
+  createDate: string; //TODO!
+  tags: TagsResponse;
   // => for Projects
   state?: string;
   endDate?: string;
@@ -29,8 +28,7 @@ export default function PrevCard(props: PrevCardProps) {
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <p className="text-tiny uppercase font-bold">{state}</p>
         <h4 className="font-bold text-large">{title}</h4>
-        <TagRenderer data={tags}  />
-        
+        <TagRenderer data={tags} />
       </CardHeader>
       <CardBody className="pb-0 pt-2 px-4 flex-col items-start">
         <small className="text-default-500">{description}</small>

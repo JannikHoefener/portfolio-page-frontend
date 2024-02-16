@@ -23,7 +23,7 @@ import {
 } from "react-icons/bs";
 import { ThemeSwitch } from "@/components/theme-switch";
 
-import LinkIcon from "./linkIcon";
+import LinkIcon from "./basicComponents/linkIcon";
 
 export const Navbar = () => {
   return (
@@ -61,7 +61,7 @@ export const Navbar = () => {
         <NavbarItem className="hidden sm:flex gap-2">
           <LinkIcon
             link={"https://www.google.de/"}
-            text=""
+            title=""
             icon={<BsGithub className="text-default-500" />}
             showAnchor={false}
             asButton={false}

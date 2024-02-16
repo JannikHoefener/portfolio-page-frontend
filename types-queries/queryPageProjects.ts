@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { ComponentSingleImageResponse } from "./typesImages";
 import { linktreeIdResponse } from "./componentLinktree";
 import { TagsResponse } from "./typeTags";
+import { DynComponentContent } from "./typesDynComponents";
 
 // Projects Card
 export const GET_PROJECTS_INFO = gql`
@@ -57,7 +58,81 @@ export type ProjectInfoResponse = {
 
 // Project
 export const PROJECT = gql`
-  query getProject($projectID: ID!) {
+query getProject($projectID: ID!) {
+  project(id: $projectID) {
+    data {
+      id
+      attributes {
+        title
+        state
+        createDate
+        endDate
+        description
+        cardCover {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        tags {
+          data {
+            id
+            attributes {
+              key
+            }
+          }
+        }
+        linktree {
+          data {
+            id
+          }
+        }
+        content {
+          ... on ComponentComponentsHeadline {
+            __typename
+            headlineText
+            variant
+          }
+          ... on ComponentComponentsTextSection {
+            __typename
+            sectionTitle {
+              headlineText
+              variant
+            }
+            text
+          }
+          ... on ComponentComponentsCreateLink {
+            __typename
+            website
+            title
+            url
+            description
+            type
+          }
+          ... on ComponentComponentsAlbum {
+            __typename
+            Headline {
+              headlineText
+              variant
+            }
+            Media {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+`;
+
+/*   query getProject($projectID: ID!) {
     project(id: $projectID) {
       data {
         id
@@ -94,8 +169,7 @@ export const PROJECT = gql`
         }
       }
     }
-  }
-`;
+  } */
 
 export type ProjectResponse = {
   project: {
@@ -120,6 +194,7 @@ type ProjectType = {
     /* Content */
     tags: TagsResponse;
     linktree: linktreeIdResponse;
-    /* content: []; */
+    /* Dyn-Content */
+    content: DynComponentContent[];
   };
 };

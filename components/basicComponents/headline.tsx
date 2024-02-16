@@ -1,6 +1,6 @@
-import { componentHeadlineType } from '@/types-queries/componentHeadline'
 import React from 'react'
 import { BasicComponentsProps } from '../../types-queries/basicComponentTypes'
+import { DynComponentContent, DynComponentsHeadlineType } from '@/types-queries/typesDynComponents'
 
 // todo: styled Headlines here 
 // with paddings etc
@@ -16,14 +16,18 @@ export function Heading3({children}: BasicComponentsProps) {
   return(<p className="text-lg font-semibold">{children}</p>)
 }
 
-export default function Headline(props: componentHeadlineType) {
-    const {title, variant} = props
+type HeadlineProps = {
+  props: DynComponentsHeadlineType
+}
+
+export default function DynHeadline({props}: HeadlineProps) {
+    const {headlineText, variant} = props
     switch (variant) {
         case "h1":
-          return <h1>{title}</h1>
+          return <Heading1>{headlineText}</Heading1>
         case "h2":
-          return <h2>{title}</h2>
+          return <Heading2>{headlineText}</Heading2>
         default: /*h3*/ 
-          return <h3>{title}</h3>
+          return <Heading3>{headlineText}</Heading3>
       }
 }
