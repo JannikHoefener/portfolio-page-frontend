@@ -6,24 +6,15 @@ import {
   Navbar as NextUINavbar,
 } from "@nextui-org/navbar";
 
-import { Link } from "@nextui-org/link";
-
 import { link as linkStyles } from "@nextui-org/theme";
 
+import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
 import clsx from "clsx";
 import NextLink from "next/link";
-import {
-  BsInstagram,
-  BsLink,
-  BsTiktok,
-  BsLinkedin,
-  BsGithub,
-  BsSpotify,
-} from "react-icons/bs";
-import { ThemeSwitch } from "@/components/theme-switch";
-
-import LinkIcon from "./basicComponents/linkIcon";
+import { BsGithub } from "react-icons/bs";
+import { Link } from "@nextui-org/link";
+import { DynLink } from "./basicComponents/linkIcon";
 
 export const Navbar = () => {
   return (
@@ -59,13 +50,15 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <LinkIcon
-            link={"https://www.google.de/"}
-            title=""
-            icon={<BsGithub className="text-default-500" />}
-            showAnchor={false}
-            asButton={false}
-          />
+          <DynLink props={{
+            __typename: undefined,
+            website: "GitHub",
+            title: "Github",
+            url: "https://github.com/JannikHoefener",
+            description: "Github",
+            type: "linkIcon"
+            
+          }} />
           <Link
             isExternal
             href={siteConfig.links.github}

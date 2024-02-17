@@ -65,7 +65,7 @@ export default function Linktree(props: linktreeProps) {
               {ltdata.createLinks
                 .filter((link) => link.type === "linkIcon")
                 .map((link) => (
-                  <DynLink props={link} />
+                  <DynLink props={link} key={link.url}/>
                 ))}
             </div>
             {/* LinkButtons */}
@@ -73,7 +73,7 @@ export default function Linktree(props: linktreeProps) {
               {ltdata.createLinks
                 .filter((link) => link.type === "linkButton")
                 .map((link) => (
-                  <DynLink props={link} />
+                  <DynLink props={link} key={link.url}/>
                 ))}
             </div>
           </CardBody>

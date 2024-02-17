@@ -22,11 +22,10 @@ export default function Home() {
       {/* About Section */}
       {thisData.SectionAbout.map((item, index) => (
         <>
-          <DynHeadline
-            headlineText={item.sectionTitle.headlineText}
-            variant={item.sectionTitle.variant}
-          />
-          <p>{item.text}</p>
+          <DynHeadline props={item.sectionTitle} key={index}/>
+          {/* headlineText={item.sectionTitle.headlineText}
+            variant={item.sectionTitle.variant} */}
+          <p key={(index+item.text).length}>{item.text}</p>
         </>
       ))}
 
@@ -34,11 +33,11 @@ export default function Home() {
         {/* Linktree */}
         <div>
           <Linktree id={thisData.linktree.data.id} />
-          <TagRenderer
+          {/* <TagRenderer
             data={{
               data: [],
             }}
-          />
+          /> */}
         </div>
         {/* CV Section */}
         <div className="flex flex-col gap-2">
@@ -55,6 +54,7 @@ export default function Home() {
                   /* ...item.tags */
                 ]
               }
+              key={index}
             />
           ))}
         </div>

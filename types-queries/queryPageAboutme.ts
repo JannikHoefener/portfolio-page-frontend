@@ -1,12 +1,12 @@
-import { gql } from "@apollo/client";
-import { componentHeadlineType } from "./componentHeadline";
-import { linktreeIdResponse, linktreeResponse } from "./componentLinktree";
 import { sectionCvType } from "@/components/cvPart";
+import { gql } from "@apollo/client";
+import { linktreeIdResponse } from "./componentLinktree";
+import { DynComponentsHeadlineType } from "./typesDynComponents";
 
 // http://localhost:1337/graphql
 
 type sectionAboutType = {
-  sectionTitle: componentHeadlineType;
+  sectionTitle: DynComponentsHeadlineType;
   text: string;
 };
 
