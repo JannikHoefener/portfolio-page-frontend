@@ -1,17 +1,24 @@
 import { TagsResponse } from "@/types-queries/typeTags";
 import { Chip } from "@nextui-org/react";
-import React, { ReactComponentElement, ReactNode } from "react";
+import { ReactNode } from "react";
 import { FaRegLightbulb, FaRegEye } from "react-icons/fa";
+
+{
+  /* 
+<div className="flex flex-wrap gap-2 ">
+  <div className="flex gap-2 "><TagDescriptionRenderer data={tags} /></div>
+  <div className="flex gap-2 "><TagKnowledgeRenderer data={tags} /></div>
+</div>; 
+*/
+}
 
 /* Tag-List Renderer */
 export type TagRendererProps = {
   data: TagsResponse;
 };
 
-export default function TagRenderer(props: TagRendererProps) {
-  /* console.log("tagrend:", props); */
+export function TagKnowledgeRenderer(props: TagRendererProps) {
   const { data } = props;
-
   const knowledgeTags = data.data
     .filter((tagPoint) => tagPoint.attributes?.type === "Knowledge")
     .map((tagPoint) => (
@@ -23,6 +30,11 @@ export default function TagRenderer(props: TagRendererProps) {
       />
     ));
 
+  return knowledgeTags;
+}
+
+export function TagDescriptionRenderer(props: TagRendererProps) {
+  const { data } = props;
   const descriptionTags = data.data
     .filter((tagPoint) => tagPoint.attributes?.type === "Description")
     .map((tagPoint) => (
@@ -34,16 +46,10 @@ export default function TagRenderer(props: TagRendererProps) {
       />
     ));
 
-  return (
-    <div className="flex flex-wrap gap-2 ">
-      <div className="flex gap-2 ">{descriptionTags}</div>
-      <div className="flex gap-2 ">{knowledgeTags}</div>
-    </div>
-  );
+  return descriptionTags;
 }
 
 /* Tag Component */
-
 type TagComponentProps = {
   tagKey: string;
   color:

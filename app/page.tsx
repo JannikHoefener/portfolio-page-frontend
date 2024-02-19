@@ -2,7 +2,6 @@
 
 import DynHeadline from "@/components/basicComponents/headline";
 import { PageLayout } from "@/components/basicComponents/layoutTemplates";
-import TagRenderer from "@/components/basicComponents/tagRenderer";
 import CvPart from "@/components/cvPart";
 import Linktree from "@/components/linktree";
 import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/queryPageAboutme";

@@ -5,25 +5,22 @@ import {
   ProjectResponse,
 } from "@/types-queries/queryPageProjects";
 import { useQuery } from "@apollo/client";
-import Linktree from "./linktree";
-import TagRenderer from "./basicComponents/tagRenderer";
-import DynHeadline, { Heading1 } from "./basicComponents/headline";
-import { DynTextSection } from "./basicComponents/textblock";
-import { DynLink } from "./basicComponents/linkIcon";
-import { ArticleHeaderSection } from "./basicComponents/layoutTemplates";
 import {
-  Button,
   Card,
   CardBody,
-  CardFooter,
-  Chip,
-  Image,
+  CardFooter
 } from "@nextui-org/react";
 import {
-  FaRegCalendarCheck,
-  FaRegCalendar,
   FaHourglassEnd,
+  FaRegCalendar,
+  FaRegCalendarCheck,
 } from "react-icons/fa6";
+import DynHeadline, { Heading1 } from "./basicComponents/headline";
+import { ArticleHeaderSection } from "./basicComponents/layoutTemplates";
+import { DynLink } from "./basicComponents/linkIcon";
+import { DynTextSection } from "./basicComponents/textblock";
+import Linktree from "./linktree";
+import { TagKnowledgeRenderer } from "./basicComponents/tagRenderer";
 type projectProps = {
   id: number;
 };
@@ -79,7 +76,7 @@ export default function ProjectArticle(props: projectProps) {
                 </>
               )}
             </div>
-            <TagRenderer data={tags} />
+            <TagKnowledgeRenderer data={tags} />
           </CardFooter>
         </Card>
         <div className="m-10">
