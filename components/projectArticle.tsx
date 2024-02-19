@@ -20,7 +20,7 @@ import { ArticleHeaderSection } from "./basicComponents/layoutTemplates";
 import { DynLink } from "./basicComponents/linkIcon";
 import { DynTextSection } from "./basicComponents/textblock";
 import Linktree from "./linktree";
-import { TagKnowledgeRenderer } from "./basicComponents/tagRenderer";
+import { TagKnowledgeRenderer } from "../config/tagRenderer";
 type projectProps = {
   id: number;
 };
@@ -64,7 +64,7 @@ export default function ProjectArticle(props: projectProps) {
             className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100" /* className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10" */
           >
             <div className="flex flex-wrap gap-2 flex centered">
-              <FaRegCalendar /> {headerData.createDate}
+              <FaRegCalendar /> {headerData.startDate}
               {headerData.endDate ? (
                 <>
                   <FaRegCalendarCheck />

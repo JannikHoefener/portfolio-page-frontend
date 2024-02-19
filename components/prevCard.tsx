@@ -6,7 +6,13 @@ import { TagsResponse } from "@/types-queries/typeTags";
 import {
   TagDescriptionRenderer,
   TagKnowledgeRenderer,
-} from "./basicComponents/tagRenderer";
+} from "../config/tagRenderer";
+import { formatDateToYM } from "@/config/dateMachine";
+import {
+  FaHourglassEnd,
+  FaRegCalendar,
+  FaRegCalendarCheck,
+} from "react-icons/fa6";
 
 type PrevCardProps = {
   // => for both
@@ -15,7 +21,7 @@ type PrevCardProps = {
   title: string;
   description: string;
   cardCover?: ComponentSingleImageResponse; //TODO!
-  createDate: string; //TODO!
+  startDate: string; //TODO!
   tags: TagsResponse;
   // => for Projects
   state?: string;
@@ -25,15 +31,35 @@ type PrevCardProps = {
 
 export default function PrevCard(props: PrevCardProps) {
   /* TODO: link to project/ blog */
-  const { isFor, id, title, description, cardCover, state, tags } = props;
-  console.log(
-    "PrevCard",
-    tags /* .data.map((tag)=> console.log(tag.attributes.key)) */
-  );
+  const {
+    isFor,
+    id,
+    title,
+    description,
+    cardCover,
+    state,
+    tags,
+    startDate,
+    endDate,
+  } = props;
   return (
     <Card as={Link} href={id ? `/${isFor}/${id}` : `/`} className="py-4">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <p className="text-tiny uppercase font-bold">{state}</p>
+        <div className="flex flex-wrap gap-2 text-tiny uppercase font-bold flex items-center flex-wrap ">
+          <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
+            {state + ": "}
+          </p>
+          <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
+            <FaRegCalendar /> {formatDateToYM(startDate)}
+          </p>
+          {endDate ? (
+            <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
+              <FaRegCalendarCheck />
+              {formatDateToYM(endDate)}
+            </p>
+          ) : null}
+        </div>
+
         <h4 className="font-bold text-large">{title}</h4>
         <div className="flex flex-wrap gap-2 ">
           <div className="flex gap-2 ">
@@ -43,7 +69,6 @@ export default function PrevCard(props: PrevCardProps) {
             <TagKnowledgeRenderer data={tags} />
           </div>
         </div>
-        
       </CardHeader>
       <CardBody className="pb-0 pt-2 px-4 flex-col items-start">
         <small className="text-default-500">{description}</small>

@@ -8,24 +8,31 @@ type PrevSectionProps = {
 
 export default function PrevSection(props: PrevSectionProps) {
   const { isFor, data } = props;
-  const thisData = data.projects.data;
-  /* console.log("thisData", thisData); */
+  const thisData = [...data.projects.data]; // Create a shallow copy of the array to allow to sort the data and evoid (read-only error)
   return (
     <>
       <div className="grid grid-cols-3 gap-3 w-100%">
-        {thisData.map((dataPoint) => (
-          <PrevCard
-            key={dataPoint.id}
-            isFor={isFor}
-            id={dataPoint.id}
-            title={dataPoint.attributes.title}
-            description={dataPoint.attributes.description}
-            cardCover={dataPoint.attributes.cardCover}
-            state={dataPoint.attributes.state}
-            createDate={dataPoint.attributes.createDate}
-            tags={dataPoint.attributes.tags}
-          />
-        ))}
+        {thisData
+          .sort(
+            (a, b) =>
+              new Date(b.attributes.startDate).getTime() -
+              new Date(a.attributes.startDate).getTime()
+          )
+          /* here should be sorting based on startDate: string type sorted from new to old */
+          .map((dataPoint) => (
+            <PrevCard
+              key={dataPoint.id}
+              isFor={isFor}
+              id={dataPoint.id}
+              title={dataPoint.attributes.title}
+              description={dataPoint.attributes.description}
+              cardCover={dataPoint.attributes.cardCover}
+              state={dataPoint.attributes.state}
+              startDate={dataPoint.attributes.startDate}
+              endDate={dataPoint.attributes.endDate}
+              tags={dataPoint.attributes.tags}
+            />
+          ))}
       </div>
     </>
   );

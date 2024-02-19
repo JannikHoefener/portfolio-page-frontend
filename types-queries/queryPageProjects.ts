@@ -13,7 +13,7 @@ export const GET_PROJECTS_INFO = gql`
         attributes {
           title
           state
-          createDate
+          startDate
           endDate
           cardCover {
             data {
@@ -42,7 +42,7 @@ type ProjectInfoType = {
   attributes: {
     title: string;
     state: string;
-    createDate: string;
+    startDate: string;
     endDate: string;
     cardCover: ComponentSingleImageResponse;
     tags: TagsResponse;
@@ -65,7 +65,7 @@ query getProject($projectID: ID!) {
       attributes {
         title
         state
-        createDate
+        startDate
         endDate
         description
         cardCover {
@@ -140,7 +140,7 @@ query getProject($projectID: ID!) {
         attributes {
           title
           state
-          createDate
+          startDate
           endDate
           description
           cardCover {
@@ -188,7 +188,7 @@ type ProjectType = {
     /* Header */
     title: string;
     description: string;
-    createDate: string;
+    startDate: string;
     endDate: string;
     state: string;
     cardCover: ComponentSingleImageResponse;
