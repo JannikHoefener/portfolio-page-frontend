@@ -20,11 +20,11 @@ export default function Linktree(props: linktreeProps) {
   if (loading || data === undefined) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  console.log(data.linktree.data.attributes);
+  /* console.log(data.linktree.data.attributes); */
   const ltdata = data.linktree.data.attributes;
 
   return (
-    <div className="min-w-3xl">
+    <div className="min-w-sm max-w-sm">
       {/* TODO: Linktree soll eine fixe breite bekommen, mehr als jz */}
       <section>
         <Card shadow="lg">
@@ -61,11 +61,13 @@ export default function Linktree(props: linktreeProps) {
 
             {/* Links */}
             {/* LinkIcons */}
-            <div className="flex items-center justify-center pt-4">
+            <div className=" flex items-center justify-center pt-4 ">
               {ltdata.createLinks
                 .filter((link) => link.type === "linkIcon")
                 .map((link) => (
-                  <DynLink props={link} key={link.url}/>
+                  <div className=" appearance-none bg-transparent bg-none shadow-xl shadow-cyan-500/50">
+                    <DynLink props={link} key={link.url} />
+                  </div>
                 ))}
             </div>
             {/* LinkButtons */}
@@ -73,7 +75,7 @@ export default function Linktree(props: linktreeProps) {
               {ltdata.createLinks
                 .filter((link) => link.type === "linkButton")
                 .map((link) => (
-                  <DynLink props={link} key={link.url}/>
+                  <DynLink props={link} key={link.url} />
                 ))}
             </div>
           </CardBody>

@@ -19,7 +19,7 @@ YouTube */
 // https://react-icons.github.io/react-icons
 
 export function iconChooser(props: string) {
-    console.log(props)
+    /* console.log(props) */
   switch (props) {
     case "Instagram":
       return <BsInstagram />;

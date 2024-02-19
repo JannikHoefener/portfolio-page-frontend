@@ -3,13 +3,13 @@ import { Chip } from "@nextui-org/react";
 import React, { ReactComponentElement, ReactNode } from "react";
 import { FaRegLightbulb, FaRegEye } from "react-icons/fa";
 
-
 /* Tag-List Renderer */
 export type TagRendererProps = {
   data: TagsResponse;
 };
 
 export default function TagRenderer(props: TagRendererProps) {
+  /* console.log("tagrend:", props); */
   const { data } = props;
 
   const knowledgeTags = data.data

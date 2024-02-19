@@ -1,5 +1,6 @@
 export type TagsResponse = {
     data: {
+      id?:number
       attributes: {
           /* tagData: TagType; */
           key: string;

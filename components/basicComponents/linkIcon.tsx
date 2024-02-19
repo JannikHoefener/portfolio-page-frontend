@@ -34,26 +34,34 @@ export default function LinkIcon(props: linkIcon) {
 } */
 
 type dynLinkProps = {
-  props: DynComponentsCreateLinkType
+  props: DynComponentsCreateLinkType;
 };
-export function DynLink({props}: dynLinkProps) {
-  const {description, title, type, url,website } = props;
-  const asButton = type === "linkButton"
-  const linkTitle = type === "linkIcon" ? "" :  website == "weblink" ? title : website
+export function DynLink({ props }: dynLinkProps) {
+  const { description, title, type, url, website } = props;
+  const asButton = type === "linkButton";
+  const linkTitle =
+    type === "linkIcon" ? "" : website == "weblink" ? title : website;
   return (
     <Link
       isExternal
-      isBlock 
+      isBlock
       href={url}
       aria-label={title ? title : "no title set"}
       color="foreground"
-      className={asButton ? buttonStyles({ variant: "bordered", radius: "full" }) : ""}
+      className={
+        asButton ? buttonStyles({ variant: "bordered", radius: "full" }) : "bg-transparent bg-none"
+      }
+      
     >
-      <div className="flex gap-1 items-center justify-center display-flex ">
+      <div className="bg-transparent bg-none flex gap-1 items-center justify-center display-flex ">
         {iconChooser(website)}
-        {linkTitle} {type === "linkButton" ?  description? " ("+description+")": null : null }
+        {linkTitle}{" "}
+        {type === "linkButton"
+          ? description
+            ? " (" + description + ")"
+            : null
+          : null}
       </div>
     </Link>
   );
 }
-

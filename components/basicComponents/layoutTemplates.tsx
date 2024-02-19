@@ -1,11 +1,11 @@
+import { Card } from "@nextui-org/react";
 import { BasicComponentsProps } from "../../types-queries/basicComponentTypes";
-
 
 //Page-Box
 // => toDo: als Layout nutzen nicht so schmal wie article aber auch nicht ganz bis an bildschirmrand
 // TODO! Styling! just padding not centering!!!
 // className="mx-auto max-w-5xl p-4
-export function PageLayout({ children }: BasicComponentsProps) {  
+export function PageLayout({ children }: BasicComponentsProps) {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       {children}
@@ -27,3 +27,15 @@ export function ArticleBox({ children }: BasicComponentsProps) {
     bg-white: Setzt die Hintergrundfarbe auf Weiß.
     shadow-md: Fügt eine mittlere Schattenklasse hinzu, um dem Element einen dezenten Schatten zu verleihen. */
 
+export function ArticleHeaderSection({ children }: BasicComponentsProps) {
+  return (
+    <Card className="border-none shadow w-full  bg-gradient-to-t from-background to-0 ">
+      
+          {children}
+      
+      
+      
+
+      </Card>
+  );
+}

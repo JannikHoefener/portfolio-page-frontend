@@ -23,6 +23,7 @@ type PrevCardProps = {
 export default function PrevCard(props: PrevCardProps) {
   /* TODO: link to project/ blog */
   const { isFor, id, title, description, cardCover, state, tags } = props;
+  console.log("PrevCard", tags/* .data.map((tag)=> console.log(tag.attributes.key)) */);
   return (
     <Card as={Link} href={id ? `/${isFor}/${id}` : `/`} className="py-4">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">

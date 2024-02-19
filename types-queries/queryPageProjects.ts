@@ -80,6 +80,7 @@ query getProject($projectID: ID!) {
             id
             attributes {
               key
+              type
             }
           }
         }
