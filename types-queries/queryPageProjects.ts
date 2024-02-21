@@ -37,7 +37,7 @@ export const GET_PROJECTS_INFO = gql`
   }
 `;
 
-type ProjectInfoType = {
+export type ProjectInfoType = {
   id: string;
   attributes: {
     title: string;
@@ -130,47 +130,7 @@ query getProject($projectID: ID!) {
     }
   }
 }
-
 `;
-
-/*   query getProject($projectID: ID!) {
-    project(id: $projectID) {
-      data {
-        id
-        attributes {
-          title
-          state
-          startDate
-          endDate
-          description
-          cardCover {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          tags {
-            data {
-              id
-              attributes {
-                key
-                type
-              }
-            }
-          }
-          linktree {
-            data {
-              id
-            }
-          }
-          content {
-            __typename
-          }
-        }
-      }
-    }
-  } */
 
 export type ProjectResponse = {
   project: {

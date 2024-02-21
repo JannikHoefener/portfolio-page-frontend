@@ -1,20 +1,20 @@
 "use client";
-import { PrevSectionProjects } from "@/components/prevSectionProjects";
+import { PrevSectionBlogs } from "@/components/prevSectionBlogs";
 import { title } from "@/components/primitives";
-import { GET_PROJECTS_INFO, ProjectInfoResponse } from "@/types-queries/queryPageProjects";
+import { BlogsInfoResponse, GET_BLOGS_INFO } from "@/types-queries/queryPageBlog";
 import { useQuery } from "@apollo/client";
 
-export default function ProjectsPage() {
+export default function BlogPage() {
   /* const { loading, error, data } = useQuery<ProjectInfoResponse>(GET_PROJECTS_INFO); */
-  const { loading, error, data } = useQuery<ProjectInfoResponse>(GET_PROJECTS_INFO);
+  const { loading, error, data } = useQuery<BlogsInfoResponse>(GET_BLOGS_INFO);
   if (loading || data === undefined) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
   /* const thisData = data.projects.data
   console.log("thisData", thisData) */
   return (
     <>
-      <h1 className={title()}>My Projects</h1>
-      <PrevSectionProjects isFor={"projects"} data={data}/>
+      <h1 className={title()}>My Blog-Posts:</h1>
+      <PrevSectionBlogs isFor={"blogs"} data={data}/>
     </>
   );
 }

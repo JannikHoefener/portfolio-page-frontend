@@ -5,11 +5,7 @@ import {
   ProjectResponse,
 } from "@/types-queries/queryPageProjects";
 import { useQuery } from "@apollo/client";
-import {
-  Card,
-  CardBody,
-  CardFooter
-} from "@nextui-org/react";
+import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import {
   FaHourglassEnd,
   FaRegCalendar,
@@ -21,6 +17,7 @@ import { DynLink } from "./basicComponents/linkIcon";
 import { DynTextSection } from "./basicComponents/textblock";
 import Linktree from "./linktree";
 import { TagKnowledgeRenderer } from "../config/tagRenderer";
+import { formatDateToYM } from "@/config/dateMachine";
 type projectProps = {
   id: number;
 };
@@ -35,7 +32,6 @@ export default function ProjectArticle(props: projectProps) {
     return <p>Loading data for projectArticle with propsID: {props.id}</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  const thisData = data.project.data;
   const headerData = data.project.data.attributes;
   const dynContent = data.project.data.attributes.content;
   const tags = data.project.data.attributes.tags;
@@ -63,24 +59,25 @@ export default function ProjectArticle(props: projectProps) {
           <CardFooter
             className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100" /* className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10" */
           >
-            <div className="flex flex-wrap gap-2 flex centered">
-              <FaRegCalendar /> {headerData.startDate}
+            <div className="flex flex-wrap gap-2 text-tiny uppercase font-bold flex items-center flex-wrap ">
+              <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
+                {headerData.state + ": "}
+              </p>
+              <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
+                <FaRegCalendar /> {formatDateToYM(headerData.startDate)}
+              </p>
               {headerData.endDate ? (
-                <>
+                <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
                   <FaRegCalendarCheck />
-                  {headerData.endDate}
-                </>
-              ) : (
-                <>
-                  <FaHourglassEnd /> {headerData.state}
-                </>
-              )}
+                  {formatDateToYM(headerData.endDate)}
+                </p>
+              ) : null}
+              <TagKnowledgeRenderer data={tags} />
             </div>
-            <TagKnowledgeRenderer data={tags} />
           </CardFooter>
         </Card>
         <div className="m-10">
-        <p>{headerData.description}</p>
+          <p>{headerData.description}</p>
         </div>
       </ArticleHeaderSection>
     </>
@@ -88,14 +85,14 @@ export default function ProjectArticle(props: projectProps) {
   return (
     <>
       {/* Header */}
-      {headerData.linktree.data == null ?  (
+      {headerData.linktree.data == null ? (
         HeaderSection
       ) : (
         <div className="flex space-x-4">
           <div className="flex-1">{HeaderSection}</div>
           <Linktree id={headerData.linktree.data.id} />
         </div>
-      ) }
+      )}
 
       {/* Content Section */}
       {dynContent.map((component, index) => (

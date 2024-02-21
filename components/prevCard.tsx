@@ -21,12 +21,13 @@ type PrevCardProps = {
   title: string;
   description: string;
   cardCover?: ComponentSingleImageResponse; //TODO!
-  startDate: string; //TODO!
   tags: TagsResponse;
   // => for Projects
   state?: string;
+  startDate?: string; //TODO!
   endDate?: string;
   // => for blog
+  publishedAt?: string;
 };
 
 export default function PrevCard(props: PrevCardProps) {
@@ -46,12 +47,14 @@ export default function PrevCard(props: PrevCardProps) {
     <Card as={Link} href={id ? `/${isFor}/${id}` : `/`} className="py-4">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <div className="flex flex-wrap gap-2 text-tiny uppercase font-bold flex items-center flex-wrap ">
-          <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
+          {state === undefined ? null: <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
             {state + ": "}
-          </p>
+          </p> }
+          {startDate ? (
           <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
             <FaRegCalendar /> {formatDateToYM(startDate)}
           </p>
+          ) : null}
           {endDate ? (
             <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
               <FaRegCalendarCheck />
