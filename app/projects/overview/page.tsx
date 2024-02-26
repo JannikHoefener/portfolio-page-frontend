@@ -1,6 +1,6 @@
 "use client";
-import { PrevSectionProjects } from "@/components/prevSectionProjects";
-import { title } from "@/components/primitives";
+import { Heading1 } from "@/components/basicComponents/headline";
+import { PrevSectionProjects } from "@/components/overviewComponents/prevSectionProjects";
 import { GET_PROJECTS_INFO, ProjectInfoResponse } from "@/types-queries/queryPageProjects";
 import { useQuery } from "@apollo/client";
 
@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   console.log("thisData", thisData) */
   return (
     <>
-      <h1 className={title()}>My Projects</h1>
+      <Heading1>My Projects</Heading1>
       <PrevSectionProjects isFor={"projects"} data={data}/>
     </>
   );

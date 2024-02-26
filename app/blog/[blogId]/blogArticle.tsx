@@ -1,40 +1,35 @@
-"use client";
+"use client"
+import DynContentRenderer from "@/components/articleComponents/dynContentRenderer";
+import { Heading1 } from "@/components/basicComponents/headline";
+import { ArticleHeaderSection } from "@/components/basicComponents/layoutTemplates";
+import Linktree from "@/components/linktree";
+import { formatDateToYM } from "@/config/dateMachine";
+import { TagKnowledgeRenderer } from "@/config/tagRenderer";
 import {
-  GetProjectId,
-  PROJECT,
-  ProjectResponse,
-} from "@/types-queries/queryPageProjects";
+    BlogResponse,
+    GET_BLOG,
+    GetBlogId,
+} from "@/types-queries/queryPageBlog";
 import { useQuery } from "@apollo/client";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
-import {
-  FaHourglassEnd,
-  FaRegCalendar,
-  FaRegCalendarCheck,
-} from "react-icons/fa6";
-import DynHeadline, { Heading1 } from "./basicComponents/headline";
-import { ArticleHeaderSection } from "./basicComponents/layoutTemplates";
-import { DynLink } from "./basicComponents/linkIcon";
-import { DynTextSection } from "./basicComponents/textblock";
-import Linktree from "./linktree";
-import { TagKnowledgeRenderer } from "../config/tagRenderer";
-import { formatDateToYM } from "@/config/dateMachine";
-type projectProps = {
+import { FaRegCalendar } from "react-icons/fa6";
+
+type blogProps = {
   id: number;
 };
 
-export default function ProjectArticle(props: projectProps) {
-  const { loading, error, data } = useQuery<ProjectResponse, GetProjectId>(
-    PROJECT,
-    { variables: { projectID: props.id } }
-  );
+export default function BlogArticle(props: blogProps) {
+  const { loading, error, data } = useQuery<BlogResponse, GetBlogId>(GET_BLOG, {
+    variables: { blogID: props.id },
+  });
   /*   const { loading, error, data } = useQuery<TagsResponse>(GET_TAGS); */
   if (loading || data === undefined)
     return <p>Loading data for projectArticle with propsID: {props.id}</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  const headerData = data.project.data.attributes;
-  const dynContent = data.project.data.attributes.content;
-  const tags = data.project.data.attributes.tags;
+  const headerData = data.blog.data.attributes;
+  const dynContent = data.blog.data.attributes.content;
+  const tags = data.blog.data.attributes.tags;
   console.log(
     "tagsProjectArt",
     tags /* .data.map((tag)=> console.log(tag.attributes.key)) */
@@ -60,18 +55,18 @@ export default function ProjectArticle(props: projectProps) {
             className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100" /* className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10" */
           >
             <div className="flex flex-wrap gap-2 text-tiny uppercase font-bold flex items-center flex-wrap ">
-              <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
+              {/* <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
                 {headerData.state + ": "}
-              </p>
+              </p> */}
               <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
-                <FaRegCalendar /> {formatDateToYM(headerData.startDate)}
+                <FaRegCalendar /> {formatDateToYM(headerData.updatedAt)}
               </p>
-              {headerData.endDate ? (
+              {/* {headerData.endDate ? (
                 <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
                   <FaRegCalendarCheck />
                   {formatDateToYM(headerData.endDate)}
                 </p>
-              ) : null}
+              ) : null} */}
               <TagKnowledgeRenderer data={tags} />
             </div>
           </CardFooter>
@@ -85,34 +80,17 @@ export default function ProjectArticle(props: projectProps) {
   return (
     <>
       {/* Header */}
-      {headerData.linktree.data == null ? (
+      {headerData.linktrees.data === null || [] ?  (
         HeaderSection
       ) : (
         <div className="flex space-x-4">
           <div className="flex-1">{HeaderSection}</div>
-          <Linktree id={headerData.linktree.data.id} />
+          <Linktree id={headerData.linktrees.data.id} />
         </div>
       )}
 
       {/* Content Section */}
-      {dynContent.map((component, index) => (
-        <div key={index}>
-          {/* Render components based on their typename and order */}
-          {component.__typename === "ComponentComponentsHeadline" && (
-            <>{<DynHeadline props={component} />}</>
-          )}
-          {component.__typename === "ComponentComponentsTextSection" && (
-            <>{<DynTextSection props={component} />}</>
-          )}
-          {component.__typename === "ComponentComponentsCreateLink" && (
-            <>{<DynLink props={component} />}</>
-          )}
-          {/* TODO:ComponentComponentsAlbum! */}
-          {component.__typename === "ComponentComponentsAlbum" && (
-            <>{/* {<LinkBlock props={component}  />} */}</>
-          )}
-        </div>
-      ))}
+      <DynContentRenderer dynContent={dynContent} />
     </>
   );
 }

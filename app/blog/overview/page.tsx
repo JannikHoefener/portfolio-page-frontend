@@ -1,6 +1,6 @@
 "use client";
-import { PrevSectionBlogs } from "@/components/prevSectionBlogs";
-import { title } from "@/components/primitives";
+import { Heading1 } from "@/components/basicComponents/headline";
+import { PrevSectionBlogs } from "@/components/overviewComponents/prevSectionBlogs";
 import { BlogsInfoResponse, GET_BLOGS_INFO } from "@/types-queries/queryPageBlog";
 import { useQuery } from "@apollo/client";
 
@@ -13,8 +13,8 @@ export default function BlogPage() {
   console.log("thisData", thisData) */
   return (
     <>
-      <h1 className={title()}>My Blog-Posts:</h1>
-      <PrevSectionBlogs isFor={"blogs"} data={data}/>
+      <Heading1>My Blog-Posts:</Heading1>
+      <PrevSectionBlogs isFor={"blog"} data={data}/>
     </>
   );
 }

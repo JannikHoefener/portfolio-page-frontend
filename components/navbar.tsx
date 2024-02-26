@@ -10,10 +10,10 @@ import { link as linkStyles } from "@nextui-org/theme";
 
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
+import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import NextLink from "next/link";
 import { BsGithub } from "react-icons/bs";
-import { Link } from "@nextui-org/link";
 import { DynLink } from "./basicComponents/linkIcon";
 
 export const Navbar = () => {

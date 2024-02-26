@@ -6,7 +6,7 @@ import { TagsResponse } from "@/types-queries/typeTags";
 import {
   TagDescriptionRenderer,
   TagKnowledgeRenderer,
-} from "../config/tagRenderer";
+} from "../../config/tagRenderer";
 import { formatDateToYM } from "@/config/dateMachine";
 import {
   FaHourglassEnd,

@@ -1,4 +1,4 @@
-import ProjectArticle from "@/components/projectArticle";
+import ProjectArticle from "@/app/projects/[projectId]/projectArticle";
 import React from "react";
 
 type ProjectArticleProps = {
