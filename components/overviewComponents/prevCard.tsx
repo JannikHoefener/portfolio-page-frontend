@@ -50,11 +50,11 @@ export default function PrevCard(props: PrevCardProps) {
           {state === undefined ? null: <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
             {state + ": "}
           </p> }
-          {startDate ? (
+          {startDate && (
           <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
             <FaRegCalendar /> {formatDateToYM(startDate)}
           </p>
-          ) : null}
+          )}
           {endDate ? (
             <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
               <FaRegCalendarCheck />

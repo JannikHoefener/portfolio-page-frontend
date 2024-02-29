@@ -1,13 +1,22 @@
 import { ProjectInfoResponse } from "@/types-queries/queryPageProjects";
 import PrevCard from "./prevCard";
+import { BlogsInfoResponse } from "@/types-queries/queryPageBlog";
 
 type PrevSectionProps = {
   isFor: string;
-  data: ProjectInfoResponse;
+  data: ProjectInfoResponse | BlogsInfoResponse;
 };
+
+const isProjectInfoResponse = (data:any) : data is ProjectInfoResponse => {
+  return data.projects !== undefined;
+}
 
 export default function PrevSection(props: PrevSectionProps) {
   const { isFor, data } = props;
+
+  if(isProjectInfoResponse(data)){
+    data.projects
+  } //toDo: for blogs
   const thisData = [...data.projects.data]; // Create a shallow copy of the array to allow to sort the data and evoid (read-only error)
   return (
     <>
