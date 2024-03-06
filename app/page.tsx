@@ -1,11 +1,14 @@
 "use client";
 
-import DynHeadline, { Heading2 } from "@/components/basicComponents/headlineComponents";
+import DynHeadline, {
+  Heading2,
+} from "@/components/basicComponents/headlineComponents";
 import { PageLayout } from "@/components/basicComponents/layoutComponents";
 import { DynTextSection } from "@/components/basicComponents/textComponents";
 import CvPart from "@/components/cvPart";
 import Linktree from "@/components/linktree";
 import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/queryPageAboutme";
+import { TagKnowledgeRenderer } from "@/utils/tagRenderer";
 import { useQuery } from "@apollo/client";
 
 export default function Home() {
@@ -27,37 +30,36 @@ export default function Home() {
       <div className="grid grid-cols-2 gap-4 py-8 md:py-10">
         {/* Linktree */}
         <div className="flex flex-col gap-2">
-          <Heading2> Linktree</Heading2>
+          <Heading2>Skills</Heading2>
+          {thisData.Skills.map((skillPart) => (
+            <div>
+            <DynHeadline props={skillPart.SkillHeadline}/>
+            <TagKnowledgeRenderer data={skillPart.tags}/>
+            </div>
+          ))}
+          <Heading2>Linktree</Heading2>
           <Linktree id={thisData.linktree.data.id} />
-          {/* TODO: <TagRenderer
-            data={{
-              data: [],
-            }}
-          /> */}
         </div>
         {/* CV Section */}
         <div className="flex flex-col gap-2">
           <Heading2>CV Part</Heading2>
-          {thisData.SectionCv.slice().sort(
-            (a, b) =>
-              new Date(b.from).getTime() -
-              new Date(a.from).getTime()
-          ).map((item, index) => (
-            <CvPart
-              title={item.title}
-              location={item.location}
-              position={item.position}
-              from={item.from}
-              until={item.until}
-              description={item.description}
-              tags={
-                [
-                  /* ...item.tags */
-                ]
-              }
-              key={index}
-            />
-          ))}
+          {thisData.SectionCv.slice()
+            .sort(
+              (a, b) => new Date(b.from).getTime() - new Date(a.from).getTime()
+            )
+            .map((item, index) => (
+              <CvPart
+                title={item.title}
+                location={item.location}
+                position={item.position}
+                from={item.from}
+                until={item.until}
+                description={item.description}
+                tags={item.tags
+                }
+                key={index}
+              />
+            ))}
         </div>
       </div>
       <p>{thisData.updatedAt}</p>

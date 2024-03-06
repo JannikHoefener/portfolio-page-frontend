@@ -2,6 +2,7 @@ import { sectionCvType } from "@/components/cvPart";
 import { gql } from "@apollo/client";
 import { linktreeIdResponse } from "./queryLinktree";
 import { DynComponentsHeadlineType } from "./typesDynComponents";
+import { TagsResponse } from "./typeTags";
 
 // http://localhost:1337/graphql
 
@@ -10,10 +11,16 @@ type sectionAboutType = {
   text: string;
 };
 
+type SkillsType = {
+  SkillHeadline: DynComponentsHeadlineType
+  tags: TagsResponse
+}
+
 type aboutMeType = {
   caption: string;
   SectionAbout: sectionAboutType[];
   linktree: linktreeIdResponse;
+  Skills: SkillsType[]
   SectionCv: sectionCvType[];
   updatedAt: string;
 };
@@ -27,44 +34,59 @@ export type aboutMeResponse = {
 };
 
 export const GET_ABOUTME = gql`
-  query {
-    aboutMe {
-      data {
-        attributes {
-          caption
-          SectionAbout {
-            sectionTitle {
-              headlineText
-              variant
-            }
-            text
+query {
+  aboutMe {
+    data {
+      attributes {
+        caption
+        SectionAbout {
+          sectionTitle {
+            headlineText
+            variant
           }
-          linktree {
+          text
+        }
+        linktree {
+          data {
+            id
+          }
+        }
+        Skills {
+          SkillHeadline {
+            variant
+            headlineText
+          }
+          tags {
             data {
-              id
-            }
-          }
-          SectionCv {
-            title
-            location
-            position
-            from
-            until
-            description
-            tags {
-              data {
-                attributes {
-                  key
-                  type
-                }
+              attributes {
+                key
+                type
               }
             }
           }
-          updatedAt
         }
+        SectionCv {
+          title
+          location
+          position
+          from
+          until
+          description
+          tags {
+            data {
+              attributes {
+                key
+                type
+              }
+            }
+          }
+        }
+        updatedAt
       }
     }
   }
+}
+
 `;
 
 export const GET_TAGS = gql`

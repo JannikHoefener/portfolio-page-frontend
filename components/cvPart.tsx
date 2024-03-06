@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 import { LLText, MdText } from "./basicComponents/textComponents";
 import { TagsResponse } from "@/types-queries/typeTags";
+import { TagKnowledgeRenderer } from "@/utils/tagRenderer";
 
 export type sectionCvType = {
   title: string;
@@ -17,7 +18,7 @@ export type sectionCvType = {
   from: Date;
   until: Date;
   description: string;
-  tags: TagsResponse[];
+  tags: TagsResponse;
 };
 
 export default function CvPart(props: sectionCvType) {
@@ -34,6 +35,9 @@ export default function CvPart(props: sectionCvType) {
               <MdText text={description} />
             </AccordionItem>
           </Accordion>
+          <div>
+            <TagKnowledgeRenderer data={tags} />
+          </div>
         </CardBody>
         <Divider />
         <CardFooter>
