@@ -1,6 +1,6 @@
 "use client";
 
-import DynHeadline from "@/components/basicComponents/headline";
+import DynHeadline, { Heading2 } from "@/components/basicComponents/headline";
 import { PageLayout } from "@/components/basicComponents/layoutTemplates";
 import { DynTextSection } from "@/components/basicComponents/textblock";
 import CvPart from "@/components/cvPart";
@@ -21,14 +21,15 @@ export default function Home() {
       <h1>{thisData.caption}</h1>
       {/* About Section */}
       {thisData.SectionAbout.map((item, index) => (
-          <DynTextSection props={item} />
+        <DynTextSection props={item} />
       ))}
 
       <div className="grid grid-cols-2 gap-4 py-8 md:py-10">
         {/* Linktree */}
-        <div>
+        <div className="flex flex-col gap-2">
+          <Heading2> Linktree</Heading2>
           <Linktree id={thisData.linktree.data.id} />
-          {/* <TagRenderer
+          {/* TODO: <TagRenderer
             data={{
               data: [],
             }}
@@ -36,6 +37,7 @@ export default function Home() {
         </div>
         {/* CV Section */}
         <div className="flex flex-col gap-2">
+          <Heading2>CV Part</Heading2>
           {thisData.SectionCv.map((item, index) => (
             <CvPart
               title={item.title}

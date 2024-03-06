@@ -38,14 +38,14 @@ export default function BlogArticle(props: blogProps) {
     <>
       <ArticleHeaderSection>
         <Card isFooterBlurred radius="lg" className="m-10 border-none ">
-          <div className="max-h-[250px] ">
-            <img
-              /* TODO: Image per api! */
-              src="https://media.istockphoto.com/id/1259192924/de/foto/happy-people-dance-im-nachtclub-partykonzert.jpg?s=1024x1024&w=is&k=20&c=rAS1ho5kYWHiezBXYnNABM64mc3GmFGstcbFGNpdGOw="
-              alt="TODO here"
-              className="w-full bg-cover bg-center "
-            />
-          </div>
+          <img
+            src={
+              "http://localhost:1337" +
+              headerData.cardCover.data?.attributes.url
+            }
+            alt="Cover Image not found"
+            className="max-h-[250px] w-full object-cover "
+          />
           <CardBody className="content-center  before:bg-white/10 border-white/20 border-1 overflow-hidden absolute before:rounded-xl rounded-large w-auto shadow-small ">
             <Heading1>
               <div className="text-black ">{headerData.title}</div>

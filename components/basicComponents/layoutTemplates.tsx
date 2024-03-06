@@ -30,12 +30,7 @@ export function ArticleBox({ children }: BasicComponentsProps) {
 export function ArticleHeaderSection({ children }: BasicComponentsProps) {
   return (
     <Card className="border-none shadow w-full  bg-gradient-to-t from-background to-0 ">
-      
-          {children}
-      
-      
-      
-
-      </Card>
+      {children}
+    </Card>
   );
 }

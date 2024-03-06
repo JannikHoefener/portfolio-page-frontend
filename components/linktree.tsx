@@ -24,7 +24,7 @@ export default function Linktree(props: linktreeProps) {
   const ltdata = data.linktree.data.attributes;
 
   return (
-    <div className="min-w-sm max-w-sm">
+    <div className="min-w-lg max-w-lg">
       {/* TODO: Linktree soll eine fixe breite bekommen, mehr als jz */}
       <section>
         <Card shadow="lg">
@@ -33,8 +33,8 @@ export default function Linktree(props: linktreeProps) {
             <div className="flex justify-center">
               <Avatar
                 src={
-                  "http://localhost:1337/uploads/hero_card_2fa0c97532.png"
-                } /* TODO: here the upload */
+                  "http://localhost:1337"+ltdata.profileImage.data?.attributes.url
+                } /* TODO: need to be changed after deployment */
                 showFallback
                 fallback={
                   <IoPeopleCircleOutline

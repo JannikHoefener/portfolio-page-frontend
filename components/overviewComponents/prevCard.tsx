@@ -79,7 +79,7 @@ export default function PrevCard(props: PrevCardProps) {
           <Image
             alt="Card background"
             className="object-cover rounded-xl"
-            src={"http://localhost:1337/" + cardCover.data?.attributes.url} //todo!
+            src={"http://localhost:1337" + cardCover.data?.attributes.url} //todo!
             width={270}
           />
         ) : null} */}

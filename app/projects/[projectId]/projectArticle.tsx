@@ -38,18 +38,18 @@ export default function ProjectArticle(props: projectProps) {
     <>
       <ArticleHeaderSection>
         <Card isFooterBlurred radius="lg" className="m-10 border-none ">
-          <div className="max-h-[250px] ">
-            <img
-              /* TODO: Image per api! */
-              src="https://media.istockphoto.com/id/1259192924/de/foto/happy-people-dance-im-nachtclub-partykonzert.jpg?s=1024x1024&w=is&k=20&c=rAS1ho5kYWHiezBXYnNABM64mc3GmFGstcbFGNpdGOw="
-              alt="TODO here"
-              className="w-full bg-cover bg-center "
-            />
-          </div>
-          <CardBody className="content-center  before:bg-white/10 border-white/20 border-1 overflow-hidden absolute before:rounded-xl rounded-large w-auto shadow-small ">
-            <Heading1>
-              <div className="text-black ">{headerData.title}</div>
-            </Heading1>
+          <img
+            src={
+              "http://localhost:1337" +
+              headerData.cardCover.data?.attributes.url
+            }
+            alt="Cover Image not found"
+            className="max-h-[250px] w-full object-cover "
+          />
+          <CardBody className="absolute h-full flex items-center justify-center drop-shadow-xl">
+            <div className="text-background ">
+              <Heading1>{headerData.title}</Heading1>
+            </div>
           </CardBody>
           <CardFooter
             className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100" /* className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10" */
