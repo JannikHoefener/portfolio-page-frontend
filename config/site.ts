@@ -5,7 +5,7 @@ export const siteConfig = {
   description: "Portfolio, Projects and Blogposts",
   navItems: [
     {
-      label: "AboutMe",
+      label: "About",
       href: "/",
     },
     {

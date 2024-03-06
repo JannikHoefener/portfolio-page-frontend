@@ -2,6 +2,7 @@
 
 import DynHeadline from "@/components/basicComponents/headline";
 import { PageLayout } from "@/components/basicComponents/layoutTemplates";
+import { DynTextSection } from "@/components/basicComponents/textblock";
 import CvPart from "@/components/cvPart";
 import Linktree from "@/components/linktree";
 import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/queryPageAboutme";
@@ -20,12 +21,7 @@ export default function Home() {
       <h1>{thisData.caption}</h1>
       {/* About Section */}
       {thisData.SectionAbout.map((item, index) => (
-        <>
-          <DynHeadline props={item.sectionTitle} key={index}/>
-          {/* headlineText={item.sectionTitle.headlineText}
-            variant={item.sectionTitle.variant} */}
-          <p key={(index+item.text).length}>{item.text}</p>
-        </>
+          <DynTextSection props={item} />
       ))}
 
       <div className="grid grid-cols-2 gap-4 py-8 md:py-10">
