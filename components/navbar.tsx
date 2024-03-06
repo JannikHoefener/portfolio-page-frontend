@@ -8,7 +8,7 @@ import {
 
 import { link as linkStyles } from "@nextui-org/theme";
 
-import { ThemeSwitch } from "@/components/theme-switch";
+import { ThemeSwitch } from "@/config/theme-switch";
 import { siteConfig } from "@/config/site";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";

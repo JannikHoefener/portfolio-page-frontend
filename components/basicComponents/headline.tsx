@@ -20,6 +20,8 @@ type HeadlineProps = {
   props: DynComponentsHeadlineType
 }
 
+/* In Strapi we can choose between 3 variants for a Headline 
+   ... this have no effect on the markdown interpreter right now  */
 export default function DynHeadline({props}: HeadlineProps) {
     const {headlineText, variant} = props
     switch (variant) {
