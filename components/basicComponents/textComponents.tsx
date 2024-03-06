@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import DynHeadline from "./headlineComponents";
 
-import { BasicComponentsProps } from "../../types-queries/basicComponentTypes";
+import { BasicComponentsProps } from "../../types-queries/typesBasicComponents";
 
 
 //HighlightedText

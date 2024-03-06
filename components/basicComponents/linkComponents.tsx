@@ -2,7 +2,7 @@ import { Link } from "@nextui-org/link";
 import React from "react";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { DynComponentsCreateLinkType } from "@/types-queries/typesDynComponents";
-import { iconChooser } from "@/config/iconChooser";
+import { iconChooser } from "@/utils/iconChooser";
 
 type dynLinkProps = {
   props: DynComponentsCreateLinkType;

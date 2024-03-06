@@ -1,5 +1,5 @@
 "use client";
-import { formatDateToYM } from "@/config/dateMachine";
+import { formatDateToYM } from "@/utils/dateMachine";
 import {
   GetProjectId,
   PROJECT,
@@ -8,7 +8,7 @@ import {
 import { useQuery } from "@apollo/client";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import { FaRegCalendar, FaRegCalendarCheck } from "react-icons/fa6";
-import { TagKnowledgeRenderer } from "../../../config/tagRenderer";
+import { TagKnowledgeRenderer } from "../../../utils/tagRenderer";
 import DynContentRenderer from "../../../components/articleComponents/dynContentRenderer";
 import { Heading1 } from "../../../components/basicComponents/headlineComponents";
 import { ArticleHeaderSection } from "../../../components/basicComponents/layoutComponents";

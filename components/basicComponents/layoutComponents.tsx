@@ -1,5 +1,5 @@
 import { Card } from "@nextui-org/react";
-import { BasicComponentsProps } from "../../types-queries/basicComponentTypes";
+import { BasicComponentsProps } from "../../types-queries/typesBasicComponents";
 
 //Page-Box
 // => toDo: als Layout nutzen nicht so schmal wie article aber auch nicht ganz bis an bildschirmrand

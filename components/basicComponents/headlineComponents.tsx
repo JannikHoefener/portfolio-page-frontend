@@ -1,5 +1,5 @@
 import React from 'react'
-import { BasicComponentsProps } from '../../types-queries/basicComponentTypes'
+import { BasicComponentsProps } from '../../types-queries/typesBasicComponents'
 import { DynComponentContent, DynComponentsHeadlineType } from '@/types-queries/typesDynComponents'
 
 // todo: styled Headlines here 

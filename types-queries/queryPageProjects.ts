@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import { ComponentSingleImageResponse } from "./typesImages";
-import { linktreeIdResponse } from "./componentLinktree";
+import { linktreeIdResponse } from "./queryLinktree";
 import { TagsResponse } from "./typeTags";
 import { DynComponentContent } from "./typesDynComponents";
 

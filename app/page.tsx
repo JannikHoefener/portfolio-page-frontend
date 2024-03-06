@@ -38,7 +38,11 @@ export default function Home() {
         {/* CV Section */}
         <div className="flex flex-col gap-2">
           <Heading2>CV Part</Heading2>
-          {thisData.SectionCv.map((item, index) => (
+          {thisData.SectionCv.slice().sort(
+            (a, b) =>
+              new Date(b.from).getTime() -
+              new Date(a.from).getTime()
+          ).map((item, index) => (
             <CvPart
               title={item.title}
               location={item.location}

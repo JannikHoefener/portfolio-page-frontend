@@ -1,6 +1,6 @@
 import { sectionCvType } from "@/components/cvPart";
 import { gql } from "@apollo/client";
-import { linktreeIdResponse } from "./componentLinktree";
+import { linktreeIdResponse } from "./queryLinktree";
 import { DynComponentsHeadlineType } from "./typesDynComponents";
 
 // http://localhost:1337/graphql

@@ -3,8 +3,8 @@ import DynContentRenderer from "@/components/articleComponents/dynContentRendere
 import { Heading1 } from "@/components/basicComponents/headlineComponents";
 import { ArticleHeaderSection } from "@/components/basicComponents/layoutComponents";
 import Linktree from "@/components/linktree";
-import { formatDateToYM } from "@/config/dateMachine";
-import { TagKnowledgeRenderer } from "@/config/tagRenderer";
+import { formatDateToYM } from "@/utils/dateMachine";
+import { TagKnowledgeRenderer } from "@/utils/tagRenderer";
 import {
     BlogResponse,
     GET_BLOG,

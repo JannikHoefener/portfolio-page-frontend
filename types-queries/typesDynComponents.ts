@@ -39,7 +39,7 @@ export type DynComponentsAlbumType = {
       attributes: {
         url: string;
       };
-    }[];/* [] richtig?! checken! */
+    }[];
   };
 };
 

@@ -1,4 +1,4 @@
-import { getMonthYearName } from "@/config/dateMachine";
+import { getMonthYearName } from "@/utils/dateMachine";
 import {
   Accordion,
   AccordionItem,

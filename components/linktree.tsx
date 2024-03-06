@@ -2,7 +2,7 @@
 import {
   GET_LINKTREE,
   linktreeResponse,
-} from "@/types-queries/componentLinktree";
+} from "@/types-queries/queryLinktree";
 import { useQuery } from "@apollo/client";
 import { Avatar, Card, CardBody } from "@nextui-org/react";
 import { IoPeopleCircleOutline } from "react-icons/io5";

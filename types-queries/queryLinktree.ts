@@ -1,32 +1,8 @@
-// mit dynamic zone
-//https://github.com/strapi/strapi/issues/4849
-/* query getLinktree($linktreeID: ID!) {
-    linktree(id: $linktreeID) {
-      data {
-        attributes {
-          title
-          profileImage {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          description
-          createLink {... on LinktreeCreateLinkDynamicZone {
-              title
-              url
-              type
-              description
-            }}
-      }
-    }
-  } */
+
 
 import { gql } from "@apollo/client";
-import { componentLinkType } from "./componentLink";
-import { ComponentSingleImageResponse } from "./typesImages";
 import { DynComponentsCreateLinkType } from "./typesDynComponents";
+import { ComponentSingleImageResponse } from "./typesImages";
 
 // mit repeatable Components
 export type componentLinktreeType = {
