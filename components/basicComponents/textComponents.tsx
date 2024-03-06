@@ -1,9 +1,19 @@
 import { DynComponentsTextSectionType } from "@/types-queries/typesDynComponents";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import DynHeadline from "./headline";
+import DynHeadline from "./headlineComponents";
+
+import { BasicComponentsProps } from "../../types-queries/basicComponentTypes";
 
 
+//HighlightedText
+export function HLText({ children }: BasicComponentsProps) {
+  return <p className="font-semibold">{children}</p>;
+}
+//LowlightedText
+export function LLText({ children }: BasicComponentsProps) {
+  return <p className="text-small text-default-500">{children}</p>;
+}
 
 //Markdown-Text-Interpreter
 type MdTextProps = {

@@ -1,5 +1,5 @@
 "use client";
-import { Heading1 } from "@/components/basicComponents/headline";
+import { Heading1 } from "@/components/basicComponents/headlineComponents";
 import { PrevSectionBlogs } from "@/components/overviewComponents/prevSectionBlogs";
 import { BlogsInfoResponse, GET_BLOGS_INFO } from "@/types-queries/queryPageBlog";
 import { useQuery } from "@apollo/client";

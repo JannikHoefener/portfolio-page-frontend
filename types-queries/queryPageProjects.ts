@@ -113,7 +113,7 @@ query getProject($projectID: ID!) {
           }
           ... on ComponentComponentsAlbum {
             __typename
-            Headline {
+            sectionAlbumTitle {
               headlineText
               variant
             }

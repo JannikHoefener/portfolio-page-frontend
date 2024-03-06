@@ -1,8 +1,8 @@
 "use client";
 
-import DynHeadline, { Heading2 } from "@/components/basicComponents/headline";
-import { PageLayout } from "@/components/basicComponents/layoutTemplates";
-import { DynTextSection } from "@/components/basicComponents/textblock";
+import DynHeadline, { Heading2 } from "@/components/basicComponents/headlineComponents";
+import { PageLayout } from "@/components/basicComponents/layoutComponents";
+import { DynTextSection } from "@/components/basicComponents/textComponents";
 import CvPart from "@/components/cvPart";
 import Linktree from "@/components/linktree";
 import { GET_ABOUTME, aboutMeResponse } from "@/types-queries/queryPageAboutme";

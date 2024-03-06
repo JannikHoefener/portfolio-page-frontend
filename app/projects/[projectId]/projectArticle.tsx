@@ -10,8 +10,8 @@ import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import { FaRegCalendar, FaRegCalendarCheck } from "react-icons/fa6";
 import { TagKnowledgeRenderer } from "../../../config/tagRenderer";
 import DynContentRenderer from "../../../components/articleComponents/dynContentRenderer";
-import { Heading1 } from "../../../components/basicComponents/headline";
-import { ArticleHeaderSection } from "../../../components/basicComponents/layoutTemplates";
+import { Heading1 } from "../../../components/basicComponents/headlineComponents";
+import { ArticleHeaderSection } from "../../../components/basicComponents/layoutComponents";
 import Linktree from "../../../components/linktree";
 type projectProps = {
   id: number;

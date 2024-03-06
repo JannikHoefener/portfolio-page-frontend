@@ -1,8 +1,9 @@
 import { DynComponentContent } from "@/types-queries/typesDynComponents";
 import React from "react";
-import DynHeadline from "../basicComponents/headline";
-import { DynTextSection } from "../basicComponents/textblock";
-import { DynLink } from "../basicComponents/linkIcon";
+import DynHeadline from "../basicComponents/headlineComponents";
+import { DynTextSection } from "../basicComponents/textComponents";
+import { DynLink } from "../basicComponents/linkComponents";
+import { DynImageAlbum } from "../basicComponents/imageComponents";
 
 type DynContentRendererProps = {
   dynContent: DynComponentContent[];
@@ -26,7 +27,7 @@ export default function DynContentRenderer(props: DynContentRendererProps) {
           )}
           {/* TODO:ComponentComponentsAlbum! */}
           {component.__typename === "ComponentComponentsAlbum" && (
-            <>{/* {<LinkBlock props={component}  />} */}</>
+            <>{<DynImageAlbum props={component}  />}</>
           )}
         </div>
       ))}

@@ -14,7 +14,7 @@ import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import NextLink from "next/link";
 import { BsGithub } from "react-icons/bs";
-import { DynLink } from "./basicComponents/linkIcon";
+import { DynLink } from "./basicComponents/linkComponents";
 
 export const Navbar = () => {
   return (

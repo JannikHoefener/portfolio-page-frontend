@@ -30,7 +30,7 @@ export type DynComponentsCreateLinkType = {
 
 export type DynComponentsAlbumType = {
   __typename: "ComponentComponentsAlbum";
-  Headline: {
+  sectionAlbumTitle: {
     headlineText: string;
     variant: string;
   };

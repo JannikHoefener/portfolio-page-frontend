@@ -7,8 +7,8 @@ import { useQuery } from "@apollo/client";
 import { Avatar, Card, CardBody } from "@nextui-org/react";
 import { IoPeopleCircleOutline } from "react-icons/io5";
 
-import { Heading1, Heading3 } from "./basicComponents/headline";
-import { DynLink } from "./basicComponents/linkIcon";
+import { Heading1, Heading3 } from "./basicComponents/headlineComponents";
+import { DynLink } from "./basicComponents/linkComponents";
 type linktreeProps = {
   id: number;
 };

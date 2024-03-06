@@ -1,7 +1,7 @@
 "use client"
 import DynContentRenderer from "@/components/articleComponents/dynContentRenderer";
-import { Heading1 } from "@/components/basicComponents/headline";
-import { ArticleHeaderSection } from "@/components/basicComponents/layoutTemplates";
+import { Heading1 } from "@/components/basicComponents/headlineComponents";
+import { ArticleHeaderSection } from "@/components/basicComponents/layoutComponents";
 import Linktree from "@/components/linktree";
 import { formatDateToYM } from "@/config/dateMachine";
 import { TagKnowledgeRenderer } from "@/config/tagRenderer";

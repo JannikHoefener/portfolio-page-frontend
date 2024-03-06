@@ -104,7 +104,7 @@ export const GET_BLOG = gql`
             }
             ... on ComponentComponentsAlbum {
               __typename
-              Headline {
+              sectionAlbumTitle {
                 headlineText
                 variant
               }

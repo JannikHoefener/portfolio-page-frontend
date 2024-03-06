@@ -7,9 +7,8 @@ import {
   CardFooter,
   Divider,
 } from "@nextui-org/react";
-import { MdText } from "./basicComponents/textblock";
+import { LLText, MdText } from "./basicComponents/textComponents";
 import { TagsResponse } from "@/types-queries/typeTags";
-import { LLText } from "./basicComponents/styledText";
 
 export type sectionCvType = {
   title: string;
