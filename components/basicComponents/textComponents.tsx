@@ -5,7 +5,6 @@ import DynHeadline from "./headlineComponents";
 
 import { BasicComponentsProps } from "../../types-queries/typesBasicComponents";
 
-
 //HighlightedText
 export function HLText({ children }: BasicComponentsProps) {
   return <p className="font-semibold">{children}</p>;
@@ -21,9 +20,11 @@ type MdTextProps = {
 };
 export function MdText(props: MdTextProps) {
   return (
-    <Markdown className={"markdown"} remarkPlugins={[remarkGfm]}>
-      {props.text}
-    </Markdown>
+    <div className="text-left">
+      <Markdown className={"markdown"} remarkPlugins={[remarkGfm]}>
+        {props.text}
+      </Markdown>
+    </div>
   );
   /* https://stackoverflow.com/questions/74607419/react-markdown-don%C2%B4t-render-markdown */
 }

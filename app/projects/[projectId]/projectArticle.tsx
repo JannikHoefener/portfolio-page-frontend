@@ -31,25 +31,28 @@ export default function ProjectArticle(props: projectProps) {
   const dynContent = data.project.data.attributes.content;
   const tags = data.project.data.attributes.tags;
   console.log(
-    "tagsProjectArt",
-    tags /* .data.map((tag)=> console.log(tag.attributes.key)) */
+    "headerData.cardCover",
+    headerData.cardCover /* .data.map((tag)=> console.log(tag.attributes.key)) */
   );
   const HeaderSection = (
     <>
       <ArticleHeaderSection>
         <Card isFooterBlurred radius="lg" className="m-10 border-none ">
-          <img
-            src={
-              "http://localhost:1337" +
-              headerData.cardCover.data?.attributes.url
-            }
-            alt="Cover Image not found"
-            className="max-h-[250px] w-full object-cover "
-          />
+          {headerData.cardCover.data === null ? (
+            <div className="min-h-[250px] max-h-[250px] w-full object-cover "></div>
+          ) : (
+            <img
+              src={
+                "http://localhost:1337" +
+                headerData.cardCover.data?.attributes.url
+              }
+              alt="Cover Image not found"
+              className="min-h-[250px] max-h-[250px] w-full object-cover "
+            />
+          )}
+
           <CardBody className="absolute h-full flex items-center justify-center drop-shadow-xl">
-            <div className="text-background ">
-              <Heading1>{headerData.title}</Heading1>
-            </div>
+            <Heading1>{headerData.title}</Heading1>
           </CardBody>
           <CardFooter
             className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100" /* className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10" */
@@ -71,16 +74,18 @@ export default function ProjectArticle(props: projectProps) {
             </div>
           </CardFooter>
         </Card>
-        <div className="m-10">
+        <div className="mb-10 mx-10">
           <p>{headerData.description}</p>
         </div>
       </ArticleHeaderSection>
     </>
   );
+
+  console.log("headerData.linktree.data", headerData.linktree.data);
   return (
     <>
       {/* Header */}
-      {headerData.linktree.data == null || [] ? (
+      {headerData.linktree == null ? (
         HeaderSection
       ) : (
         <div className="flex space-x-4">
@@ -90,7 +95,9 @@ export default function ProjectArticle(props: projectProps) {
       )}
 
       {/* Content Section */}
-      <DynContentRenderer dynContent={dynContent} />
+      <div className="mx-10">
+        <DynContentRenderer dynContent={dynContent} />
+      </div>
     </>
   );
 }

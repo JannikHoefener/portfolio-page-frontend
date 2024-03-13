@@ -26,6 +26,7 @@ export const Navbar = () => {
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
+
       <NavbarContent className="basis-1/5 sm:basis-full" justify="center">
         {/* <ul className="hidden lg:flex gap-4 justify-start ml-2"> */}
         {siteConfig.navItems.map((item) => (
@@ -49,8 +50,8 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <DynLink props={{
+        <NavbarItem className="hidden sm:flex gap-4">
+          {/* <DynLink props={{
             __typename: undefined,
             website: "GitHub",
             title: "Github",
@@ -58,23 +59,18 @@ export const Navbar = () => {
             description: "Github",
             type: "linkIcon"
             
-          }} />
+          }} /> */}
           <Link
             isExternal
-            href={siteConfig.links.github}
+            href={"https://github.com/JannikHoefener"}
             aria-label="Github"
-          ></Link>
+          >
+            <BsGithub size={22} className="text-default-500" />
+          </Link>
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal href={siteConfig.links.github} aria-label="Github">
-          <BsGithub size={22} className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent>
     </NextUINavbar>
   );
 };

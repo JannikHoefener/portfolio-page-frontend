@@ -71,7 +71,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 					),
 				})}
 			>
-			 {!isSelected || isSSR ? <FiSun size={22} /> : <FaMoon size={22} />}
+			 {!isSelected || isSSR ? <FiSun size={22} /> : <FaMoon size={22} color="grey" />}
 			</div>
 		</Component>
 	);

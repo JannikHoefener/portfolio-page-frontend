@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import DynContentRenderer from "@/components/articleComponents/dynContentRenderer";
 import { Heading1 } from "@/components/basicComponents/headlineComponents";
 import { ArticleHeaderSection } from "@/components/basicComponents/layoutComponents";
@@ -6,9 +6,9 @@ import Linktree from "@/components/linktree";
 import { formatDateToYM } from "@/utils/dateMachine";
 import { TagKnowledgeRenderer } from "@/utils/tagRenderer";
 import {
-    BlogResponse,
-    GET_BLOG,
-    GetBlogId,
+  BlogResponse,
+  GET_BLOG,
+  GetBlogId,
 } from "@/types-queries/queryPageBlog";
 import { useQuery } from "@apollo/client";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
@@ -38,18 +38,20 @@ export default function BlogArticle(props: blogProps) {
     <>
       <ArticleHeaderSection>
         <Card isFooterBlurred radius="lg" className="m-10 border-none ">
-          <img
-            src={
-              "http://localhost:1337" +
-              headerData.cardCover.data?.attributes.url
-            }
-            alt="Cover Image not found"
-            className="max-h-[250px] w-full object-cover "
-          />
-          <CardBody className="content-center  before:bg-white/10 border-white/20 border-1 overflow-hidden absolute before:rounded-xl rounded-large w-auto shadow-small ">
-            <Heading1>
-              <div className="text-black ">{headerData.title}</div>
-            </Heading1>
+          {headerData.cardCover.data === null ? (
+            <div className="min-h-[250px] max-h-[250px] w-full object-cover "></div>
+          ) : (
+            <img
+              src={
+                "http://localhost:1337" +
+                headerData.cardCover.data?.attributes.url
+              }
+              alt="Cover Image not found"
+              className="min-h-[250px] max-h-[250px] w-full object-cover "
+            />
+          )}
+          <CardBody className="absolute h-full flex items-center justify-center drop-shadow-xl">
+            <Heading1>{headerData.title}</Heading1>
           </CardBody>
           <CardFooter
             className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100" /* className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10" */
@@ -71,7 +73,7 @@ export default function BlogArticle(props: blogProps) {
             </div>
           </CardFooter>
         </Card>
-        <div className="m-10">
+        <div className="mb-10 mx-10">
           <p>{headerData.description}</p>
         </div>
       </ArticleHeaderSection>
@@ -80,7 +82,7 @@ export default function BlogArticle(props: blogProps) {
   return (
     <>
       {/* Header */}
-      {headerData.linktrees.data === null || [] ?  (
+      {headerData.linktrees.data === null || [] ? (
         HeaderSection
       ) : (
         <div className="flex space-x-4">
@@ -90,7 +92,9 @@ export default function BlogArticle(props: blogProps) {
       )}
 
       {/* Content Section */}
-      <DynContentRenderer dynContent={dynContent} />
+      <div className="mx-10">
+        <DynContentRenderer dynContent={dynContent} />
+      </div>
     </>
   );
 }

@@ -7,7 +7,7 @@ import { BasicComponentsProps } from "../../types-queries/typesBasicComponents";
 // className="mx-auto max-w-5xl p-4
 export function PageLayout({ children }: BasicComponentsProps) {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col items-center justify-center gap-4 px-60 py-8 md:py-10">
       {children}
     </section>
   );
