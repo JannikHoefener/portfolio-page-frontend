@@ -18,6 +18,11 @@ export function LLText({ children }: BasicComponentsProps) {
 type MdTextProps = {
   text: string;
 };
+
+const formatMarkdown = (markdownText: string) => {
+  return markdownText.replace(/\n/g, "<br />");
+  /* just figured it out: &nbsp;  ( with two spaces after &nbsp; )*/
+};
 export function MdText(props: MdTextProps) {
   return (
     <div className="text-left">
