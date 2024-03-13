@@ -13,6 +13,8 @@ import DynContentRenderer from "../../../components/articleComponents/dynContent
 import { Heading1 } from "../../../components/basicComponents/headlineComponents";
 import { ArticleHeaderSection } from "../../../components/basicComponents/layoutComponents";
 import Linktree from "../../../components/linktree";
+import { Image } from "@nextui-org/react";
+
 type projectProps = {
   id: number;
 };
@@ -41,23 +43,25 @@ export default function ProjectArticle(props: projectProps) {
           {headerData.cardCover.data === null ? (
             <div className="min-h-[250px] max-h-[250px] w-full object-cover "></div>
           ) : (
-            <img
-              src={
-                "http://localhost:1337" +
-                headerData.cardCover.data?.attributes.url
-              }
-              alt="Cover Image not found"
-              className="min-h-[250px] max-h-[250px] w-full object-cover "
-            />
+            <div className="min-h-[250px] max-h-[250px] w-full object-cover blur-sm">
+              <Image
+                src={
+                  "http://localhost:1337" +
+                  headerData.cardCover.data?.attributes.url
+                }
+                alt="Cover Image not found"
+                className="z-0 "
+              />
+            </div>
           )}
 
           <CardBody className="absolute h-full flex items-center justify-center drop-shadow-xl">
-            <Heading1>{headerData.title}</Heading1>
+            <Heading1><div className="drop-shadow-lg">{headerData.title}</div></Heading1>
           </CardBody>
           <CardFooter
             className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100" /* className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10" */
           >
-            <div className="flex flex-wrap gap-2 text-tiny uppercase font-bold flex items-center flex-wrap ">
+            <div className="flex flex-wrap gap-2 text-tiny uppercase font-bold flex items-center flex-wrap text-white dark:text-stone-950">
               <p className="text-tiny uppercase font-bold flex items-center flex-wrap ">
                 {headerData.state + ": "}
               </p>

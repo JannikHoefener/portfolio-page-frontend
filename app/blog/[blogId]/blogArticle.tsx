@@ -13,6 +13,7 @@ import {
 import { useQuery } from "@apollo/client";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import { FaRegCalendar } from "react-icons/fa6";
+import {Image} from "@nextui-org/react";
 
 type blogProps = {
   id: number;
@@ -41,7 +42,7 @@ export default function BlogArticle(props: blogProps) {
           {headerData.cardCover.data === null ? (
             <div className="min-h-[250px] max-h-[250px] w-full object-cover "></div>
           ) : (
-            <img
+            <Image
               src={
                 "http://localhost:1337" +
                 headerData.cardCover.data?.attributes.url
