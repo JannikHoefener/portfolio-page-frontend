@@ -24,17 +24,17 @@ export default function Home() {
       <h1>{thisData.caption}</h1>
       {/* About Section */}
       {thisData.SectionAbout.map((item, index) => (
-        <DynTextSection props={item} />
+        <DynTextSection key={index} props={item} />
       ))}
 
       <div className="grid grid-cols-2 gap-4 py-8 md:py-10">
         {/* Linktree */}
         <div className="flex flex-col gap-2">
           <Heading2>Skills</Heading2>
-          {thisData.Skills.map((skillPart) => (
-            <div>
-            <DynHeadline props={skillPart.SkillHeadline}/>
-            <TagKnowledgeRenderer data={skillPart.tags}/>
+          {thisData.Skills.map((skillPart, index) => (
+            <div key={index}>
+              <DynHeadline props={skillPart.SkillHeadline} />
+              <TagKnowledgeRenderer data={skillPart.tags} />
             </div>
           ))}
           <Heading2>Linktree</Heading2>
@@ -55,8 +55,7 @@ export default function Home() {
                 from={item.from}
                 until={item.until}
                 description={item.description}
-                tags={item.tags
-                }
+                tags={item.tags}
                 key={index}
               />
             ))}

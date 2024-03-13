@@ -30,7 +30,7 @@ export function TagKnowledgeRenderer(props: TagRendererProps) {
       />
     ));
 
-  return knowledgeTags;
+  return (<>{knowledgeTags}</>);
 }
 
 export function TagDescriptionRenderer(props: TagRendererProps) {
@@ -46,7 +46,7 @@ export function TagDescriptionRenderer(props: TagRendererProps) {
       />
     ));
 
-  return descriptionTags;
+  return (<>{descriptionTags}</>);
 }
 
 /* Tag Component */

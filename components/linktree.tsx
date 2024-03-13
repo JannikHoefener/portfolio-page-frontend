@@ -64,8 +64,8 @@ export default function Linktree(props: linktreeProps) {
             <div className=" flex items-center justify-center pt-4 ">
               {ltdata.createLinks
                 .filter((link) => link.type === "linkIcon")
-                .map((link) => (
-                  <div className=" appearance-none bg-transparent bg-none shadow-xl shadow-cyan-500/50">
+                .map((link, index) => (
+                  <div key={index} className=" appearance-none bg-transparent bg-none shadow-xl shadow-cyan-500/50">
                     <DynLink props={link} key={link.url} />
                   </div>
                 ))}
@@ -74,8 +74,8 @@ export default function Linktree(props: linktreeProps) {
             <div className="flex flex-col justify-center gap-4 pt-4">
               {ltdata.createLinks
                 .filter((link) => link.type === "linkButton")
-                .map((link) => (
-                  <DynLink props={link} key={link.url} />
+                .map((link, index) => (
+                  <DynLink props={link} key={index + link.url} />
                 ))}
             </div>
           </CardBody>

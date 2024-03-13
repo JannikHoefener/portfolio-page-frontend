@@ -13,8 +13,8 @@ export default function DynContentRenderer(props: DynContentRendererProps) {
   const { dynContent } = props;
   return (
     <>
-      {dynContent.map((component /* ,index */) => (
-        <div /* key={index} */>
+      {dynContent.map((component ,index) => (
+        <div key={index}>
           {/* Render components based on their typename and order */}
           {component.__typename === "ComponentComponentsHeadline" && (
             <>{<DynHeadline props={component} />}</>
